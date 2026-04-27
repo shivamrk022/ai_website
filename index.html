@@ -1,1425 +1,297 @@
 <!DOCTYPE html>
-<!-- saved from url=(0042)https://shivam-maurya-645957.netlify.app/# -->
-<html lang="en" class="ai-style-change-3" data-theme="light">
+<html lang="en" data-theme="light">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivam AI Automation - Next-Gen Industrial Solutions</title>
-    <link rel="stylesheet" href="./Shivam AI Automation - Next-Gen Industrial Solutions_files/all.min.css">
-    <!-- Font Awesome CDN fallback -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        crossorigin="anonymous">
-    <style>
-        :root {
-            --primary-blue: #0056b3;
-            --secondary-blue: #00d4ff;
-            --dark-bg: #010409;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-        }
+    <meta name="description" content="Shivam AI Automation delivers next-generation PLC programming, robotic automation, and smart factory integration solutions powered by AI.">
 
-        body {
-            margin: 0;
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            color: var(--text-main);
-            line-height: 1.6;
-            background-color: #fff;
-            scroll-behavior: smooth;
-        }
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
 
-        /* Fixed Navigation with glassmorphism */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 60px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .brand-text {
-            font-weight: 800;
-            font-size: 2rem;
-            letter-spacing: -0.5px;
-            color: var(--text-main);
-        }
-
-        .nav-links a {
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-
-        /* Hero Section with looping video */
-        .hero {
-            position: relative;
-            height: 95vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-            gap: 30px;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: -1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            max-width: 900px;
-            margin: 0;
-        }
-
-        .btn-cta {
-            padding: 18px 45px;
-            background: var(--primary-blue);
-            color: white;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.25rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-cta:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 86, 179, 0.4);
-            filter: brightness(1.1);
-        }
-
-        /* Generic Section Styling */
-        section {
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-blue);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Solutions Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-blue);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* FAQ Accordion */
-        .faq-item {
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            background: #fff;
-        }
-
-        .faq-btn {
-            width: 100%;
-            padding: 20px;
-            text-align: left;
-            background: #fff;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #1e293b;
-            font-size: 1.1rem;
-        }
-
-        .faq-content {
-            display: none;
-            padding: 0 20px 20px 20px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: #f8fafc;
-        }
-
-        .contact-container {
-            background: #fff;
-            padding: 60px;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            box-sizing: border-box;
-            outline: none;
-            font-size: 1rem;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--primary-blue);
-        }
-
-        /* Advanced AI Core Dashboard */
-        #dashboard {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-bg);
-            color: #fff;
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 40px;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-    <style>
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
-            border-radius: 8px;
-            overflow: hidden;
-            top: 100%;
-            left: 0;
-        }
-
-        .dropdown-content a {
-            color: #333;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-            color: var(--primary-blue);
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            color: var(--primary-blue);
-        }
-    </style>
-    <style id="theme-styles">
-        :root {
-            /* Default Dark Mode (Current Page Style) */
-            --bg-color: #010409;
-            --text-color: #e6edf3;
-            --card-bg: #0d1117;
-            --card-border: #30363d;
-            --nav-bg: rgba(1, 4, 9, 0.95);
-            --section-alt: #0d1117;
-        }
-
-        [data-theme="light"] {
-            --bg-color: #ffffff;
-            --text-color: #1e293b;
-            --card-bg: #ffffff;
-            --card-border: #e2e8f0;
-            --nav-bg: rgba(255, 255, 255, 0.95);
-            --section-alt: #f8fafc;
-        }
-
-        body {
-            background-color: var(--bg-color) !important;
-            color: var(--text-color) !important;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        nav {
-            background: var(--nav-bg) !important;
-        }
-
-        .card {
-            background: var(--card-bg) !important;
-            border-color: var(--card-border) !important;
-            color: var(--text-color) !important;
-        }
-
-        section#faq,
-        section#contact {
-            background: var(--section-alt) !important;
-        }
-
-        .brand-text,
-        .nav-links a {
-            color: var(--text-color) !important;
-        }
-
-        /* Toggle Button Styles */
-        .theme-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            transition: transform 0.2s;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Dark mode Map styles */
-        [data-theme="dark"] #location iframe,
-        :root:not([data-theme="light"]) #location iframe {
-            filter: grayscale(1) invert(1) brightness(0.7) contrast(1.2);
-        }
-
-        /* Light mode Map styles (Reset) */
-        [data-theme="light"] #location iframe {
-            filter: none;
-        }
-
-        [data-theme="light"] body {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1920") !important;
-            background-attachment: fixed;
-        }
-    </style>
-    <style id="advanced-form-styles">
-        .contact-section {
-            background: var(--section-alt);
-            position: relative;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 40px;
-            padding: 40px !important;
-            align-items: start;
-        }
-
-        /* Left side info panel */
-        .contact-info {
-            padding: 20px;
-        }
-
-        .contact-info h3 {
-            color: var(--primary-blue);
-            margin-top: 0;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            color: var(--text-muted);
-        }
-
-        .contact-method i {
-            color: var(--primary-blue);
-            font-size: 1.2rem;
-            width: 25px;
-        }
-
-        /* Modern Input Styling */
-        .form-group {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        input,
-        select,
-        textarea {
-            background: var(--card-bg) !important;
-            color: var(--text-color) !important;
-            border: 2px solid var(--card-border) !important;
-            padding: 15px 20px !important;
-            border-radius: 12px !important;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--primary-blue) !important;
-            box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .btn-cta {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)) !important;
-            border: none !important;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-    <style id="hero-advanced-styles">
-        @keyframes textGlow {
-
-            0%,
-            100% {
-                text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.2);
-            }
-
-            50% {
-                text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
-            }
-        }
-
-        @keyframes bgZoom {
-            from {
-                transform: scale(1);
-            }
-
-            to {
-                transform: scale(1.1);
-            }
-        }
-
-        @keyframes scanline {
-            0% {
-                transform: translateY(-100%);
-            }
-
-            100% {
-                transform: translateY(100vh);
-            }
-        }
-
-        .hero {
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Zooming background effect */
-        .hero-video,
-        .hero-bg-image {
-            animation: bgZoom 20s infinite alternate linear;
-        }
-
-        /* Scanning line for tech feel */
-        .hero::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: rgba(0, 212, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
-            animation: scanline 4s linear infinite;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: 5rem !important;
-            background: linear-gradient(135deg, #ffffff 30%, #00d4ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textGlow 3s infinite;
-            letter-spacing: -2px;
-            margin-bottom: 10px !important;
-        }
-
-        .hero p {
-            font-weight: 300;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.9rem !important;
-            opacity: 0.8;
-        }
-
-        .btn-cta {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(90deg, #0056b3, #00d4ff, #0056b3) !important;
-            background-size: 200% auto !important;
-            transition: 0.5s !important;
-        }
-
-        .btn-cta:hover {
-            background-position: right center !important;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6) !important;
-        }
-
-        /* Add a subtle grid overlay */
-        .hero-overlay {
-            background: radial-gradient(circle, transparent 20%, rgba(1, 4, 9, 0.4) 100%),
-                linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
-            background-size: auto, 50px 50px, 50px 50px;
-        }
-    </style>
-    <style id="visibility-fix-styles">
-        .hero {
-            /* Switch to a darker overlay to make white text pop */
-            background: linear-gradient(rgba(1, 4, 9, 0.7), rgba(1, 4, 9, 0.7)),
-                url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1920") !important;
-            background-size: cover !important;
-            background-position: center !important;
-        }
-
-        .hero h1 {
-            /* Ensure text is bright white and has a drop shadow for legibility */
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.3) !important;
-            font-size: 4.5rem !important;
-            margin-bottom: 20px !important;
-        }
-
-        .hero p {
-            color: rgba(255, 255, 255, 0.9) !important;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
-            font-size: 1.1rem !important;
-            max-width: 700px !important;
-            text-transform: none !important;
-            /* Back to normal for better reading */
-            opacity: 1 !important;
-        }
-
-        .hero-overlay {
-            /* Darken the overlay specifically for the hero section */
-            background: rgba(0, 0, 0, 0.4) !important;
-        }
-    </style>
-    <style id="advanced-logo-styles">
-        .brand {
-            display: flex !important;
-            align-items: center !important;
-        }
-
-        .brand-text {
-            font-family: 'Inter', sans-serif !important;
-            font-weight: 900 !important;
-            font-size: 1.8rem !important;
-            letter-spacing: -1px !important;
-            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
-
-        /* Ensure the logo and text stay visible in both modes */
-        [data-theme="light"] .brand-text {
-            filter: none;
-        }
-    </style>
-    <style id="advanced-header-styles">
-        nav {
-            background: rgba(255, 255, 255, 0.8) !important;
-            backdrop-filter: blur(20px) saturate(180%) !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-            padding: 10px 60px !important;
-            height: 80px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 2000 !important;
-        }
-
-        .brand {
-            display: flex !important;
-            align-items: center !important;
-            gap: 15px !important;
-            cursor: pointer !important;
-        }
-
-        /* Advanced Logo Animation Container */
-        .advanced-logo {
-            background: linear-gradient(135deg, rgba(0, 86, 179, 0.1), rgba(0, 212, 255, 0.1)) !important;
-            border-radius: 12px !important;
-            padding: 5px !important;
-            border: 1px solid rgba(0, 212, 255, 0.2) !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .brand:hover .advanced-logo {
-            transform: rotate(5deg) scale(1.05) !important;
-            border-color: var(--primary-blue) !important;
-        }
-
-        .brand-text {
-            display: flex !important;
-            flex-direction: column !important;
-            line-height: 1 !important;
-            font-family: 'Inter', sans-serif !important;
-        }
-
-        .brand-text span:first-child {
-            font-size: 1.4rem !important;
-            font-weight: 800 !important;
-            letter-spacing: 1px !important;
-            color: var(--primary-blue) !important;
-            -webkit-text-fill-color: initial !important;
-            background: none !important;
-        }
-
-        .brand-text span:last-child {
-            font-size: 0.9rem !important;
-            font-weight: 500 !important;
-            letter-spacing: 4px !important;
-            color: var(--text-muted) !important;
-            margin-top: 2px !important;
-        }
-
-        /* Modern Nav Links */
-        .nav-links a {
-            position: relative !important;
-            font-weight: 600 !important;
-            color: var(--text-main) !important;
-            transition: color 0.3s !important;
-        }
-
-        .nav-links a::after {
-            content: '' !important;
-            position: absolute !important;
-            width: 0 !important;
-            height: 2px !important;
-            bottom: -5px !important;
-            left: 0 !important;
-            background-color: var(--primary-blue) !important;
-            transition: width 0.3s !important;
-        }
-
-        .nav-links a:hover::after {
-            width: 100% !important;
-        }
-    </style>
-    <style id="logo-glow-effect">
-        @keyframes pulseGlow {
-
-            0%,
-            100% {
-                filter: drop-shadow(0 0 5px var(--primary-blue)) drop-shadow(0 0 10px var(--secondary-blue));
-                transform: scale(1);
-            }
-
-            50% {
-                filter: drop-shadow(0 0 15px var(--primary-blue)) drop-shadow(0 0 25px var(--secondary-blue));
-                transform: scale(1.05);
-            }
-        }
-
-        .advanced-logo {
-            animation: pulseGlow 3s infinite ease-in-out !important;
-            position: relative !important;
-            z-index: 2 !important;
-        }
-
-        /* Optional: Add a light aura behind the logo */
-        .advanced-logo::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, var(--secondary-blue) 0%, transparent 70%);
-            opacity: 0.2;
-            z-index: -1;
-            border-radius: 50%;
-        }
-    </style>
-    <style id="logo-hover-glow-effect">
-        /* Define the hover state for the brand container */
-        .brand:hover .advanced-logo {
-            animation: pulseGlowHover 1.5s infinite ease-in-out !important;
-            transition: all 0.5s ease !important;
-        }
-
-        @keyframes pulseGlowHover {
-
-            0%,
-            100% {
-                filter: drop-shadow(0 0 10px #ff00c1) drop-shadow(0 0 20px #9600ff);
-                transform: scale(1.1) rotate(5deg);
-            }
-
-            50% {
-                filter: drop-shadow(0 0 25px #ff00c1) drop-shadow(0 0 45px #9600ff);
-                transform: scale(1.15) rotate(5deg);
-            }
-        }
-
-        /* Update the base logo transition for smoothness */
-        .advanced-logo {
-            transition: filter 0.5s ease, transform 0.5s ease !important;
-        }
-    </style>
-    <style id="logo-visibility-final-fix">
-        .advanced-logo {
-            display: block !important;
-            width: 60px !important;
-            height: 60px !important;
-            min-width: 60px !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            z-index: 100 !important;
-        }
-
-        .advanced-logo svg {
-            display: block !important;
-            overflow: visible !important;
-        }
-
-        /* Force visibility of SVG elements */
-        .advanced-logo circle,
-        .advanced-logo path {
-            stroke-opacity: 1 !important;
-            fill-opacity: 1 !important;
-            /* Default to blue if variables are missing */
-            stroke: #0056b3;
-        }
-
-        /* Ensure specific colors for elements */
-        .advanced-logo circle[fill*="primary"] {
-            fill: #0056b3 !important;
-        }
-
-        .advanced-logo circle[stroke*="primary"] {
-            stroke: #0056b3 !important;
-        }
-
-        .advanced-logo path[stroke*="secondary"] {
-            stroke: #00d4ff !important;
-        }
-
-        .brand {
-            display: flex !important;
-            align-items: center !important;
-            gap: 15px !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-    </style>
-    <style id="logo-visibility-boost">
-        .advanced-logo {
-            background: rgba(255, 255, 255, 0.95) !important;
-            /* Semi-solid white background */
-            border-radius: 50% !important;
-            /* Perfect circle */
-            padding: 8px !important;
-            /* Space between logo and edge */
-            box-shadow: 0 0 20px rgba(0, 86, 179, 0.4), inset 0 0 10px rgba(0, 0, 0, 0.05) !important;
-            border: 2px solid #0056b3 !important;
-            /* Define the edge clearly */
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 70px !important;
-            /* Slightly larger to be more prominent */
-            height: 70px !important;
-        }
-
-        /* Adjust the text next to the new larger logo */
-        .brand-text {
-            margin-left: 10px !important;
-        }
-
-        /* Glow enhancement to make it "pop" off the page */
-        .advanced-logo::after {
-            content: '';
-            position: absolute;
-            width: 110%;
-            height: 110%;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
-            z-index: -1;
-        }
-    </style>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body style="overflow: auto;" class="ai-style-change-1">
+<body>
 
-    <!-- Navigation Bar -->
+    <!-- ── Navigation ── -->
     <nav>
         <div class="brand">
-            <div class="advanced-logo" style="position: relative; width: 60px; height: 60px; margin-right: 15px;">
-                <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
-                    <!-- Outer rotating ring with dashes -->
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--primary-blue)" stroke-width="2"
-                        stroke-dasharray="10 5" opacity="0.5">
-                        <animatetransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50"
-                            dur="10s" repeatCount="indefinite"></animatetransform>
+            <div class="advanced-logo" style="position:relative; width:60px; height:60px; margin-right:15px;">
+                <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--primary-blue)" stroke-width="2" stroke-dasharray="10 5" opacity="0.5">
+                        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="10s" repeatCount="indefinite"/>
                     </circle>
-                    <!-- Inner hex shape representing a CPU/Neural core -->
-                    <path d="M50 25 L71.65 37.5 L71.65 62.5 L50 75 L28.35 62.5 L28.35 37.5 Z" fill="none"
-                        stroke="var(--secondary-blue)" stroke-width="3">
-                        <animate attributeName="stroke-dasharray" values="0, 200; 200, 0" dur="3s"
-                            repeatCount="indefinite"></animate>
+                    <path d="M50 25 L71.65 37.5 L71.65 62.5 L50 75 L28.35 62.5 L28.35 37.5 Z" fill="none" stroke="var(--secondary-blue)" stroke-width="3">
+                        <animate attributeName="stroke-dasharray" values="0,200;200,0" dur="3s" repeatCount="indefinite"/>
                     </path>
-                    <!-- Central pulsing orb -->
                     <circle cx="50" cy="50" r="12" fill="var(--primary-blue)">
-                        <animate attributeName="r" values="10;14;10" dur="2s" repeatCount="indefinite"></animate>
-                        <animate attributeName="fill-opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite">
-                        </animate>
+                        <animate attributeName="r" values="10;14;10" dur="2s" repeatCount="indefinite"/>
+                        <animate attributeName="fill-opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
                     </circle>
-                    <!-- Shooting particles/data paths -->
                     <circle cx="50" cy="50" r="2" fill="var(--secondary-blue)">
-                        <animate attributeName="cx" values="50;85;50" dur="1.5s" repeatCount="indefinite"></animate>
-                        <animate attributeName="cy" values="50;50;50" dur="1.5s" repeatCount="indefinite"></animate>
-                        <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"></animate>
+                        <animate attributeName="cx" values="50;85;50" dur="1.5s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"/>
                     </circle>
                 </svg>
             </div>
-
-            <!-- Advanced Animated AI Logo -->
-
             <span class="brand-text">
                 <span>SHIVAM AI</span>
                 <span>AUTOMATION</span>
             </span>
         </div>
+
         <div class="nav-links">
-            <div class="dropdown"><a href="https://shivam-maurya-645957.netlify.app/#" class="dropbtn">Home <i
-                        class="fa fa-caret-down"></i></a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Home <i class="fa fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="https://shivam-maurya-645957.netlify.app/#hero">Hero Section</a>
-                    <a href="https://shivam-maurya-645957.netlify.app/#stats">Stats</a>
-                    <a href="https://shivam-maurya-645957.netlify.app/#team">Our Team</a>
+                    <a href="#hero">Hero Section</a>
+                    <a href="#solutions">Solutions</a>
+                    <a href="#faq">FAQ</a>
                 </div>
             </div>
-            <a href="https://shivam-maurya-645957.netlify.app/#solutions">Solutions</a>
-            <a href="https://shivam-maurya-645957.netlify.app/#faq">FAQ</a>
-            <a href="https://shivam-maurya-645957.netlify.app/#contact">Contact</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <video class="hero-video" autoplay="" muted="" loop="" playsinline="">
-            <source
-                src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-interface-animation-1144-large.mp4"
-                type="video/mp4">
+    <!-- ── Hero Section ── -->
+    <header class="hero" id="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-interface-animation-1144-large.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <h1>Advanced Industrial Automation Solutions</h1>
-        <p style="font-size: 1.2rem; max-width: 800px;">Deploying next-generation AI efficiency and neural network
-            architectures for modern manufacturing.</p>
+        <p>Deploying next-generation AI efficiency and neural network architectures for modern manufacturing.</p>
         <button class="btn-cta" onclick="toggleDashboard(true)">Get Started</button>
     </header>
 
-    <!-- Solutions Section -->
+    <!-- ── Solutions Section ── -->
     <section id="solutions">
         <h2>Our Solutions</h2>
-
         <div class="grid">
-            <div class="card"><img
-                src="images/industrial1.jpg"
-                style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                <h3 style="color: var(--primary-blue)">Industrial PLC Programming</h3>
+
+            <div class="card">
+                <img src="images/industrial1.jpg" alt="Industrial PLC Programming"
+                    style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:20px;">
+                <h3 style="color:var(--primary-blue)">Industrial PLC Programming</h3>
                 <p>Custom logic controllers for seamless manufacturing workflows.</p>
             </div>
-            <div class="card"><img
-                src="images/industrial2.jpg"
-                style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                <h3 style="color: var(--primary-blue)">Robotic Process Automation</h3>
+
+            <div class="card">
+                <img src="images/industrial2.jpg" alt="Robotic Process Automation"
+                    style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:20px;">
+                <h3 style="color:var(--primary-blue)">Robotic Process Automation</h3>
                 <p>End-to-end automation of complex industrial tasks.</p>
             </div>
-            <div class="card"><img
-                src="images/industrial3.jpg"
-                style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                <h3 style="color: var(--primary-blue)">Smart Factory Integration</h3>
+
+            <div class="card">
+                <img src="images/industrial3.jpg" alt="Smart Factory Integration"
+                    style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:20px;">
+                <h3 style="color:var(--primary-blue)">Smart Factory Integration</h3>
                 <p>IoT solutions for connected, data-driven production plants.</p>
             </div>
+
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" style="background: #f8fafc;">
+    <!-- ── FAQ Section ── -->
+    <section id="faq" style="background:#f8fafc;">
         <h2>Frequently Asked Questions</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
+        <div style="max-width:800px; margin:0 auto;">
+
             <div class="faq-item">
                 <button class="faq-btn" onclick="toggleFaq(this)">
                     <span>What industries do you specialize in?</span>
-                    <span style="color: var(--primary-blue); font-size: 1.5rem;">+</span>
+                    <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                 </button>
-                <div class="faq-content">Shivam Automation specializes in manufacturing, supply chain, and warehouse
-                    logistics.</div>
+                <div class="faq-content">Shivam Automation specializes in manufacturing, supply chain, and warehouse logistics.</div>
             </div>
+
             <div class="faq-item">
                 <button class="faq-btn" onclick="toggleFaq(this)">
                     <span>How long is implementation?</span>
-                    <span style="color: var(--primary-blue); font-size: 1.5rem;">+</span>
+                    <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                 </button>
                 <div class="faq-content">Implementation typically takes 4 to 12 weeks depending on complexity.</div>
             </div>
+
             <div class="faq-item">
                 <button class="faq-btn" onclick="toggleFaq(this)">
                     <span>Do you support legacy systems?</span>
-                    <span style="color: var(--primary-blue); font-size: 1.5rem;">+</span>
+                    <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                 </button>
                 <div class="faq-content">Yes, we bridge legacy PLCs with modern AI forecasting engines.</div>
             </div>
+
         </div>
     </section>
 
-    <!-- Connect with an Expert Section (Contact Form) -->
-
-
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919702515105" target="_blank" id="wa-float"
-        style="position: fixed; bottom: 100px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.5); z-index: 9998; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;"
-        title="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <style>
-        #wa-float:hover {
-            transform: scale(1.1);
-        }
-
-        #whatsapp h2::after {
-            background: white !important;
-        }
-    </style>
+    <!-- ── Contact Section ── -->
     <section id="contact" class="contact-section">
         <div class="contact-container">
             <div class="contact-info">
-                <h2 style="text-align:left; margin-bottom: 20px;">Get in Touch</h2>
-                <p style="margin-bottom: 30px;">Our AI experts are ready to transform your industrial workflow.</p>
+                <h2 style="text-align:left; margin-bottom:20px;">Get in Touch</h2>
+                <p style="margin-bottom:30px;">Our AI experts are ready to transform your industrial workflow.</p>
                 <div class="contact-method">
                     <i class="fas fa-envelope"></i>
                     <span>contact@shivam-ai.com</span>
                 </div>
                 <div class="contact-method">
                     <i class="fas fa-phone"></i>
-                    <span>+1 (555) 000-AI-BOT</span>
+                    <span>+91 97025 15105</span>
                 </div>
                 <div class="contact-method">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>123 Automation Way, Tech City</span>
+                    <span>Palghar, Maharashtra, India</span>
                 </div>
             </div>
+
             <div class="form-wrapper">
-
-
-
                 <form id="contactForm">
                     <div class="form-grid">
-                        <input type="text" placeholder="Your Name" required="">
-                        <input type="email" placeholder="Business Email" required="">
-                        <input type="tel" placeholder="Phone Number" required="">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Business Email" required>
+                        <input type="tel" placeholder="Phone Number" required>
                     </div>
-                    <select required="">
+                    <select required>
                         <option value="">Select Interest</option>
                         <option>Robotic Automation</option>
                         <option>PLC Programming</option>
                         <option>AI Vision Systems</option>
+                        <option>Smart Factory / IoT</option>
                     </select>
-                    <textarea placeholder="Tell us about your project requirements..." rows="5" required=""></textarea>
+                    <textarea placeholder="Tell us about your project requirements..." rows="5" required></textarea>
                     <button type="submit" class="btn-cta" style="width:100%">Send Request</button>
                 </form>
-
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-
-    <section>
+    <!-- ── Location Section ── -->
+    <section id="location" style="max-width:100%; padding:60px 40px;">
         <h2>Our Location</h2>
-
-        <iframe src="https://www.google.com/maps?q=palghar&output=embed" width="100%" height="400" style="border:0;">
+        <iframe src="https://www.google.com/maps?q=palghar&output=embed"
+            width="100%" height="400" style="border:0; border-radius:12px;" loading="lazy">
         </iframe>
+    </section>
 
-    </section>
-    </section>
-    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid #eee;">
-        <p style="color: var(--text-muted);">© 2026 Shivam AI Automation. All rights reserved.</p>
+    <!-- ── Footer ── -->
+    <footer style="padding:40px 20px; text-align:center; border-top:1px solid #eee;">
+        <p style="color:var(--text-muted);">© 2026 Shivam AI Automation. All rights reserved.</p>
     </footer>
 
-    <!-- AI Core Dashboard Overlay -->
-    <div id="dashboard" style="display: none; animation: 0.5s ease-out 0s 1 normal none running fadeIn;">
-        <div
-            style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #30363d; padding-bottom:20px;">
-            <h1 style="color:var(--secondary-blue); margin:0; letter-spacing: 2px;">SHIVAM AI CORE</h1>
-            <button onclick="toggleDashboard(false)"
-                style="background:none; border:1px solid #fff; color:#fff; padding:10px 20px; border-radius:30px; cursor:pointer; font-weight: bold;">EXIT
-                SESSION</button>
-        </div>
-        <div style="padding:60px 0; max-width: 1200px; margin: 0 auto;">
-            <div class="grid">
-                <div class="card" style="background:#0d1117; color:#fff; border-color:#30363d;">
-                    <div
-                        style="color:var(--text-gray); font-size:0.8rem; text-transform: uppercase; margin-bottom: 10px;">
-                        NEURAL POWER</div>
-                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">4.2 PetaFLOPS</div>
-                </div>
-                <div class="card" style="background:#0d1117; color:#fff; border-color:#30363d;">
-                    <div
-                        style="color:var(--text-gray); font-size:0.8rem; text-transform: uppercase; margin-bottom: 10px;">
-                        ACTIVE NODES</div>
-                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">1,284</div>
-                </div>
-                <div class="card" style="background:#0d1117; color:#fff; border-color:#30363d;">
-                    <div
-                        style="color:var(--text-gray); font-size:0.8rem; text-transform: uppercase; margin-bottom: 10px;">
-                        LATENCY</div>
-                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">2.4ms</div>
-                </div>
-            </div>
+    <!-- ── Floating WhatsApp Button ── -->
+    <a href="https://wa.me/919702515105" target="_blank" id="wa-float"
+        style="position:fixed; bottom:100px; right:30px; background:#25D366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; box-shadow:0 4px 15px rgba(37,211,102,0.5); z-index:9998; text-decoration:none; transition:transform 0.2s, box-shadow 0.2s;"
+        title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-            <h2 style="text-align:left; margin-top:80px; color: #fff; text-transform: uppercase; letter-spacing: 1px;">
-                Model Status Registry</h2>
-            <div class="grid" style="margin-top: 30px;">
-                <div class="card"
-                    style="background:#0d1117; color:#fff; border-color:#30363d; padding:0; overflow:hidden;">
-                    <img src="images/vision-transformer.jpg"
-                        style="width:100%; height:180px; object-fit:cover;">
-                    <div style="padding:25px;">
-                        <span style="color: var(--secondary-blue); font-size: 0.8rem; font-weight: bold;">VISION</span>
-                        <h3 style="margin: 10px 0;">Vision Transformer</h3>
-                        <p style="color:var(--text-gray); font-size: 0.9rem;">Sub-millimeter defect detection active on
-                            Line 4.</p>
-                    </div>
-                </div>
-                <div class="card"
-                    style="background:#0d1117; color:#fff; border-color:#30363d; padding:0; overflow:hidden;">
-                    <img src="images/kinematic-sync.jpg"
-                        style="width:100%; height:180px; object-fit:cover;">
-                    <div style="padding:25px;">
-                        <span style="color: #a78bfa; font-size: 0.8rem; font-weight: bold;">ROBOTICS</span>
-                        <h3 style="margin: 10px 0;">Kinematic Sync</h3>
-                        <p style="color:var(--text-gray); font-size: 0.9rem;">Autonomous swarm coordination enabled.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- ── Theme Toggle Button ── -->
+    <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
 
-    <script>
-        // Dashboard Toggle Logic
-        function toggleDashboard(show) {
-            const dash = document.getElementById('dashboard');
-            dash.style.display = show ? 'block' : 'none';
-            document.body.style.overflow = show ? 'hidden' : 'auto';
-            if (show) dash.style.animation = 'fadeIn 0.5s ease-out';
-        }
-
-        // FAQ Accordion Logic
-        function toggleFaq(btn) {
-            const content = btn.nextElementSibling;
-            const plus = btn.querySelector('span:last-child');
-            const isOpen = content.style.display === 'block';
-            content.style.display = isOpen ? 'none' : 'block';
-            plus.textContent = isOpen ? '+' : '−';
-            plus.style.color = isOpen ? 'var(--primary-blue)' : '#ef4444';
-        }
-
-        // Contact Form Feedback
-        document.getElementById('contactForm').onsubmit = (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            btn.textContent = 'REQUEST SENT!';
-            btn.style.background = '#10b981';
-            setTimeout(() => {
-                btn.textContent = 'SEND REQUEST';
-                btn.style.background = 'var(--primary-blue)';
-                e.target.reset();
-            }, 3000);
-        };
-    </script>
-
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle light/dark mode"><i
-            class="fas fa-moon" id="theme-icon"></i></button>
-
-    <!-- AI Chat Widget -->
-    <div id="ai-chat-container"
-        style="position: fixed; bottom: 170px; right: 30px; z-index: 9997; font-family: 'Inter', sans-serif;">
-        <!-- Chat Toggle Button -->
+    <!-- ── AI Chat Widget ── -->
+    <div id="ai-chat-container" style="position:fixed; bottom:170px; right:30px; z-index:9997; font-family:'Inter', sans-serif;">
         <button id="ai-chat-toggle" onclick="toggleChat()"
-            style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-blue), #00d4ff); color: white; border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(0,86,179,0.4); display: flex; align-items: center; justify-content: center; font-size: 24px; transition: transform 0.2s, box-shadow 0.2s;"
+            style="width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg, var(--primary-blue), #00d4ff); color:white; border:none; cursor:pointer; box-shadow:0 4px 20px rgba(0,86,179,0.4); display:flex; align-items:center; justify-content:center; font-size:24px; transition:transform 0.2s, box-shadow 0.2s;"
             title="Chat with AI">
             <i class="fas fa-robot"></i>
         </button>
 
-        <!-- Chat Window (Hidden by default) -->
         <div id="ai-chat-window"
-            style="display: none; position: absolute; bottom: 80px; right: 0; width: 360px; height: 520px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden;">
-            <!-- Header -->
-            <div
-                style="background: linear-gradient(135deg, var(--primary-blue), #00d4ff); color: white; padding: 18px 20px; display: flex; align-items: center; gap: 12px; justify-content: space-between;">
+            style="display:none; position:absolute; bottom:80px; right:0; width:360px; height:520px; background:var(--card-bg); border:1px solid var(--card-border); border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3); flex-direction:column; overflow:hidden;">
+
+            <div style="background:linear-gradient(135deg, var(--primary-blue), #00d4ff); color:white; padding:18px 20px; display:flex; align-items:center; gap:12px; justify-content:space-between;">
                 <div style="display:flex; align-items:center; gap:12px;">
-                    <div
-                        style="width:38px; height:38px; background:rgba(255,255,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                    <div style="width:38px; height:38px; background:rgba(255,255,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center;">
                         <i class="fas fa-robot"></i>
                     </div>
                     <div>
-                        <div style="font-weight: bold; font-size:0.95rem;">Shivam AI Assistant</div>
-                        <div style="font-size: 0.75rem; opacity: 0.85;">🟢 Online | Ready to help</div>
+                        <div style="font-weight:bold; font-size:0.95rem;">Shivam AI Assistant</div>
+                        <div style="font-size:0.75rem; opacity:0.85;">🟢 Online | Ready to help</div>
                     </div>
                 </div>
                 <button id="ai-chat-close" onclick="toggleChat()"
-                    style="background:rgba(255,255,255,0.2); border:none; color:white; width:28px; height:28px; border-radius:50%; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center;"><i
-                        class="fas fa-times"></i></button>
+                    style="background:rgba(255,255,255,0.2); border:none; color:white; width:28px; height:28px; border-radius:50%; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center;">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
 
-            <!-- Messages Area -->
             <div id="ai-chat-messages"
-                style="flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: var(--bg-color); height: 370px;">
-                <div class="ai-msg"
-                    style="background: var(--card-bg); padding: 12px 16px; border-radius: 18px 18px 18px 4px; border: 1px solid var(--card-border); max-width: 85%; align-self: flex-start; font-size: 0.88rem; line-height:1.5; color: var(--text-color);">
+                style="flex:1; padding:16px; overflow-y:auto; display:flex; flex-direction:column; gap:12px; background:var(--bg-color); height:370px;">
+                <div class="ai-msg">
                     👋 Hello! I'm Shivam's AI assistant. Ask me about <strong>industrial automation</strong>,
                     <strong>PLC programming</strong>, <strong>robotics</strong>, or how to get in touch!
                 </div>
             </div>
 
-            <!-- Input Area -->
-            <div
-                style="padding: 12px 15px; border-top: 1px solid var(--card-border); background: var(--card-bg); display: flex; gap: 10px; align-items: center;">
+            <div style="padding:12px 15px; border-top:1px solid var(--card-border); background:var(--card-bg); display:flex; gap:10px; align-items:center;">
                 <input type="text" id="ai-chat-input" placeholder="Ask me anything..."
-                    style="flex: 1; margin-bottom: 0 !important; padding: 10px 16px !important; border-radius: 25px !important; font-size:0.88rem !important;">
+                    style="flex:1; margin-bottom:0 !important; padding:10px 16px !important; border-radius:25px !important; font-size:0.88rem !important;">
                 <button id="ai-chat-send"
-                    style="background: linear-gradient(135deg, var(--primary-blue), #00d4ff); color: white; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: transform 0.2s;">
+                    style="background:linear-gradient(135deg, var(--primary-blue), #00d4ff); color:white; border:none; width:42px; height:42px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform 0.2s;">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <style>
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+    <!-- ── AI Core Dashboard Overlay ── -->
+    <div id="dashboard" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #30363d; padding-bottom:20px;">
+            <h1 style="color:var(--secondary-blue); margin:0; letter-spacing:2px;">SHIVAM AI CORE</h1>
+            <button onclick="toggleDashboard(false)"
+                style="background:none; border:1px solid #fff; color:#fff; padding:10px 20px; border-radius:30px; cursor:pointer; font-weight:bold;">
+                EXIT SESSION
+            </button>
+        </div>
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        <div style="padding:60px 0; max-width:1200px; margin:0 auto;">
+            <div class="grid">
+                <div class="card" style="background:#0d1117; color:#fff; border-color:#30363d;">
+                    <div style="color:#8b949e; font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">NEURAL POWER</div>
+                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">4.2 PetaFLOPS</div>
+                </div>
+                <div class="card" style="background:#0d1117; color:#fff; border-color:#30363d;">
+                    <div style="color:#8b949e; font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">ACTIVE NODES</div>
+                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">1,284</div>
+                </div>
+                <div class="card" style="background:#0d1117; color:#fff; border-color:#30363d;">
+                    <div style="color:#8b949e; font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">LATENCY</div>
+                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">2.4ms</div>
+                </div>
+            </div>
 
-        #ai-chat-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(0, 86, 179, 0.6);
-        }
+            <h2 style="text-align:left; margin-top:80px; color:#fff; text-transform:uppercase; letter-spacing:1px;">Model Status Registry</h2>
+            <div class="grid" style="margin-top:30px;">
+                <div class="card" style="background:#0d1117; color:#fff; border-color:#30363d; padding:0; overflow:hidden;">
+                    <img src="images/vision-transformer.jpg" alt="Vision Transformer" style="width:100%; height:180px; object-fit:cover;">
+                    <div style="padding:25px;">
+                        <span style="color:var(--secondary-blue); font-size:0.8rem; font-weight:bold;">VISION</span>
+                        <h3 style="margin:10px 0;">Vision Transformer</h3>
+                        <p style="color:#8b949e; font-size:0.9rem;">Sub-millimeter defect detection active on Line 4.</p>
+                    </div>
+                </div>
+                <div class="card" style="background:#0d1117; color:#fff; border-color:#30363d; padding:0; overflow:hidden;">
+                    <img src="images/kinematic-sync.jpg" alt="Kinematic Sync" style="width:100%; height:180px; object-fit:cover;">
+                    <div style="padding:25px;">
+                        <span style="color:#a78bfa; font-size:0.8rem; font-weight:bold;">ROBOTICS</span>
+                        <h3 style="margin:10px 0;">Kinematic Sync</h3>
+                        <p style="color:#8b949e; font-size:0.9rem;">Autonomous swarm coordination enabled.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        #ai-chat-send:hover {
-            transform: scale(1.1);
-        }
-
-        .user-msg {
-            background: linear-gradient(135deg, var(--primary-blue), #00d4ff);
-            color: white !important;
-            padding: 10px 16px;
-            border-radius: 18px 18px 4px 18px;
-            max-width: 80%;
-            align-self: flex-end;
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-
-        .ai-msg {
-            background: var(--card-bg);
-            padding: 12px 16px;
-            border-radius: 18px 18px 18px 4px;
-            border: 1px solid var(--card-border);
-            max-width: 85%;
-            align-self: flex-start;
-            font-size: 0.88rem;
-            line-height: 1.5;
-            color: var(--text-color);
-        }
-
-        .typing-indicator {
-            display: flex;
-            gap: 5px;
-            padding: 14px 16px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 18px 18px 18px 4px;
-            max-width: 80px;
-            align-self: flex-start;
-        }
-
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--primary-blue);
-            animation: typingBounce 1.2s infinite;
-        }
-
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typingBounce {
-
-            0%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-8px);
-            }
-        }
-    </style>
-
-    <script>
-        // ============================================================
-        // THEME TOGGLE  (global function so onclick="" works too)
-        // ============================================================
-        var _themeOpen = false;
-
-        function toggleTheme() {
-            var html = document.documentElement;
-            var icon = document.getElementById('theme-icon');
-            var next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', next);
-            try { localStorage.setItem('siteTheme', next); } catch (e) { }
-            if (icon) icon.className = next === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-        }
-
-        // Apply saved theme on load
-        (function () {
-            var saved = '';
-            try { saved = localStorage.getItem('siteTheme') || ''; } catch (e) { }
-            var theme = saved || document.documentElement.getAttribute('data-theme') || 'light';
-            document.documentElement.setAttribute('data-theme', theme);
-            var icon = document.getElementById('theme-icon');
-            if (icon) icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-        })();
-
-        // ============================================================
-        // AI CHATBOT  (global functions so onclick="" works too)
-        // ============================================================
-        var _chatOpen = false;
-
-        function toggleChat() {
-            var win = document.getElementById('ai-chat-window');
-            if (!win) return;
-            _chatOpen = !_chatOpen;
-            if (_chatOpen) {
-                win.style.display = 'flex';
-                win.style.flexDirection = 'column';
-                win.style.animation = 'slideUp 0.3s ease';
-                var inp = document.getElementById('ai-chat-input');
-                if (inp) inp.focus();
-            } else {
-                win.style.display = 'none';
-            }
-        }
-
-        function sendChatMessage() {
-            var inp = document.getElementById('ai-chat-input');
-            var msgs = document.getElementById('ai-chat-messages');
-            if (!inp || !msgs) return;
-            var text = inp.value.trim();
-            if (!text) return;
-            addMsg(text, 'user', msgs);
-            inp.value = '';
-            var dot = addTyping(msgs);
-            setTimeout(function () {
-                if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
-                addMsg(getBotReply(text), 'ai', msgs);
-            }, 800 + Math.random() * 700);
-        }
-
-        function addMsg(text, role, msgs) {
-            var d = document.createElement('div');
-            d.className = role === 'user' ? 'user-msg' : 'ai-msg';
-            d.innerHTML = text;
-            msgs.appendChild(d);
-            msgs.scrollTop = msgs.scrollHeight;
-        }
-
-        function addTyping(msgs) {
-            var d = document.createElement('div');
-            d.className = 'typing-indicator';
-            d.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-            msgs.appendChild(d);
-            msgs.scrollTop = msgs.scrollHeight;
-            return d;
-        }
-
-        function getBotReply(msg) {
-            var q = msg.toLowerCase();
-            if (/plc|programmable|logic controller/.test(q))
-                return '🔧 We specialise in <strong>custom PLC programming</strong> — covering Siemens, Allen-Bradley, Mitsubishi & more. Want a free consultation?';
-            if (/robot|robotic/.test(q))
-                return '🤖 Our <strong>Robotic Process Automation</strong> service handles pick-and-place, welding, assembly, and more end-to-end.';
-            if (/smart factory|iot|industry 4/.test(q))
-                return '🏭 We integrate <strong>IoT &amp; Smart Factory</strong> solutions — connecting machines, sensors and data into one unified dashboard.';
-            if (/price|cost|quote|pricing/.test(q))
-                return '💰 Pricing depends on project scope. Fill our <strong>contact form</strong> below or WhatsApp us for a free estimate!';
-            if (/contact|email|phone|whatsapp|reach/.test(q))
-                return '📬 Reach us at <strong>contact@shivam-ai.com</strong> or WhatsApp <strong>+91 98765 43210</strong>.';
-            if (/time|duration|long|week|implement/.test(q))
-                return '⏱️ Implementation typically takes <strong>4 to 12 weeks</strong> depending on project complexity.';
-            if (/hello|hi|hey|morning|afternoon/.test(q))
-                return '👋 Hey there! How can I help you with <strong>industrial automation</strong> today?';
-            if (/thank|thanks/.test(q))
-                return "😊 You're welcome! Feel free to ask anything else.";
-            if (/service|offer|provide|solution/.test(q))
-                return '🛠️ We offer:<br>• <strong>PLC Programming</strong><br>• <strong>Robotic Automation</strong><br>• <strong>Smart Factory / IoT</strong><br>• <strong>AI Vision Systems</strong>';
-            if (/automation/.test(q))
-                return '⚙️ We deliver end-to-end <strong>industrial automation</strong> solutions tailored to your production line. Want to know more?';
-            return '🤔 Great question! Please <strong>contact our team</strong> via the form below or WhatsApp us — we respond within a few hours.';
-        }
-
-        // Wire up send button and Enter key after DOM is ready
-        document.addEventListener('DOMContentLoaded', function () {
-            var sendBtn = document.getElementById('ai-chat-send');
-            var inp = document.getElementById('ai-chat-input');
-            if (sendBtn) sendBtn.addEventListener('click', sendChatMessage);
-            if (inp) inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') sendChatMessage(); });
-        });
-        // Fallback: wire immediately if DOM already ready
-        if (document.readyState !== 'loading') {
-            var _s = document.getElementById('ai-chat-send');
-            var _i = document.getElementById('ai-chat-input');
-            if (_s) _s.onclick = sendChatMessage;
-            if (_i) _i.onkeydown = function (e) { if (e.key === 'Enter') sendChatMessage(); };
-        }
-    </script>
+    <!-- ── Main JavaScript ── -->
+    <script src="js/app.js"></script>
 
 </body>
-
 </html>
