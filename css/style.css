@@ -218,7 +218,7 @@ html[data-theme="dark"] input, html[data-theme="dark"] select, html[data-theme="
 html[data-theme="dark"] input::placeholder, html[data-theme="dark"] textarea::placeholder { color: #484f58 !important; }
 html[data-theme="dark"] footer { background: #010409 !important; border-top: 1px solid #21262d !important; }
 html[data-theme="dark"] footer p { color: #8b949e !important; }
-html[data-theme="dark"] iframe { filter: grayscale(1) invert(1) brightness(0.75) contrast(1.1) !important; border-radius: 12px !important; }
+html[data-theme="dark"] iframe { border-radius: 12px !important; }
 html[data-theme="dark"] ::-webkit-scrollbar { width: 8px; background: #0d1117; }
 html[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
 html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #58a6ff; }
