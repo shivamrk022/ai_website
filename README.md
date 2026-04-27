@@ -78,7 +78,11 @@
 ```
 ai_website/
 │
-├── index.html              # Main website file (all-in-one)
+├── index.html              # Main website file (HTML structure only)
+├── css/
+│   └── style.css           # All styles, themes, and animations
+├── js/
+│   └── app.js              # Theme toggle, chatbot, dashboard, and form logic
 ├── images/                 # Local card images
 │   ├── industrial1.jpg     # PLC Programming card
 │   ├── industrial2.jpg     # Robotic Automation card
