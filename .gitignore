@@ -1,0 +1,15 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/settings.json
+
+# Temp / scratch files
+*.tmp
+*.log
+encoded.txt
+
+# Node (if ever used)
+node_modules/
