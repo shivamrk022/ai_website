@@ -153,18 +153,18 @@
             <div class="form-wrapper">
                 <form id="contactForm">
                     <div class="form-grid">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Business Email" required>
-                        <input type="tel" placeholder="Phone Number" required>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="Your Name" required>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="Business Email" required>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Phone Number" required>
                     </div>
-                    <select required>
+                    <select id="interest" name="interest" required>
                         <option value="">Select Interest</option>
                         <option>Robotic Automation</option>
                         <option>PLC Programming</option>
                         <option>AI Vision Systems</option>
                         <option>Smart Factory / IoT</option>
                     </select>
-                    <textarea placeholder="Tell us about your project requirements..." rows="5" required></textarea>
+                    <textarea id="message" name="message" placeholder="Tell us about your project requirements..." rows="5" required></textarea>
                     <button type="submit" class="btn-cta" style="width:100%">Send Request</button>
                 </form>
             </div>
