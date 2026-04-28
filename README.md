@@ -103,6 +103,58 @@ This project includes a `push-to-github.bat` file. To sync your local changes to
 | 💬 WhatsApp | [+91 97025 15105](https://wa.me/919702515105) |
 | 🐙 GitHub | [@shivamrk022](https://github.com/shivamrk022) |
 
+## 🗺️ Future Roadmap
+
+- [ ] **Advanced Predictive Maintenance:** Integration of real-time machine learning models for failure prediction.
+- [ ] **Mobile App Dashboard:** A dedicated Flutter/React Native app for remote monitoring.
+- [ ] **Multi-Language Support:** Localizing the platform for global industrial markets.
+- [ ] **Digital Twin Integration:** 3D visualization of production lines using WebGL/Three.js.
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📜 License
+
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+```text
+Copyright (c) 2026 Shivam Maurya
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+... (Full MIT License text)
+```
+
+---
+
+## 🙏 Acknowledgments
+
+- [Google Gemini](https://ai.google.dev/) for the intelligent AI backend.
+- [Font Awesome](https://fontawesome.com/) for the industry-standard icons.
+- [Mixkit](https://mixkit.co/) for the high-quality industrial video background.
+- All our industrial partners and clients who inspire our automation solutions.
+
+---
+
 <div align="center">
-⭐ Star this repo if you find it useful!
+
+⭐ **If you found this project helpful, please give it a star on GitHub!** ⭐
+
+Made with ❤️ by **Shivam Maurya** — Powering Industrial Automation with AI
+
 </div>
