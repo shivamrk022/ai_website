@@ -58,57 +58,19 @@ function toggleChat() {
     }
 }
 
-// 🔥 Send message to Python backend with error handling
-async function sendMessageToAI(message) {
-    try {
-        console.log("📤 Sending to backend:", message);
-        
-        const response = await fetch("http://localhost:5000/chat", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ message: message })
-        });
-
-        console.log("Response status:", response.status);
-        const data = await response.json();
-        console.log("Response data:", data);
-        
-        if (response.ok && data.reply) {
-            return data.reply;
-        } else {
-            return data.reply || "Unable to connect to AI server";
-        }
-
-    } catch (error) {
-        console.error("❌ Fetch Error:", error);
-        return "⚠️ Could not connect to AI server. Make sure the backend is running on http://localhost:5000";
-    }
-}
-
-// 🔥 UPDATED: Send Chat Message to AI
-async function sendChatMessage() {
+function sendChatMessage() {
     var inp = document.getElementById('ai-chat-input');
     var msgs = document.getElementById('ai-chat-messages');
     if (!inp || !msgs) return;
-
     var text = inp.value.trim();
     if (!text) return;
-
     addMsg(text, 'user', msgs);
     inp.value = '';
-
     var dot = addTyping(msgs);
-    
-    // Get AI response
-    let botReply = await sendMessageToAI(text);
-    
-    // Remove typing indicator
-    if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
-    
-    // Add AI response
-    addMsg(botReply || "Sorry, I couldn't generate a response", 'ai', msgs);
+    setTimeout(function () {
+        if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
+        addMsg(getBotReply(text), 'ai', msgs);
+    }, 800 + Math.random() * 700);
 }
 
 function addMsg(text, role, msgs) {
@@ -128,8 +90,156 @@ function addTyping(msgs) {
     return d;
 }
 
+function getBotReply(msg) {
+    var q = msg.toLowerCase();
+    if (/plc|programmable|logic controller/.test(q))
+        return '🔧 We specialise in <strong>custom PLC programming</strong> — covering Siemens, Allen-Bradley, Mitsubishi & more. Want a free consultation?';
+    if (/robot|robotic/.test(q))
+        return '🤖 Our <strong>Robotic Process Automation</strong> service handles pick-and-place, welding, assembly, and more end-to-end.';
+    if (/smart factory|iot|industry 4/.test(q))
+        return '🏭 We integrate <strong>IoT & Smart Factory</strong> solutions — connecting machines, sensors and data into one unified dashboard.';
+    if (/price|cost|quote|pricing/.test(q))
+        return '💰 Pricing depends on project scope. Fill our <strong>contact form</strong> below or WhatsApp us for a free estimate!';
+    if (/contact|email|phone|whatsapp|reach/.test(q))
+        return '📬 Reach us at <strong>contact@shivam-ai.com</strong> or WhatsApp <strong>+91 97025 15105</strong>.';
+    if (/time|duration|long|week|implement/.test(q))
+        return '⏱️ Implementation typically takes <strong>4 to 12 weeks</strong> depending on project complexity.';
+    if (/hello|hi|hey|morning|afternoon/.test(q))
+        return '👋 Hey there! How can I help you with <strong>industrial automation</strong> today?';
+    if (/thank|thanks/.test(q))
+        return "😊 You're welcome! Feel free to ask anything else.";
+    if (/service|offer|provide|solution/.test(q))
+        return '🛠️ We offer:<br>• <strong>PLC Programming</strong><br>• <strong>Robotic Automation</strong><br>• <strong>Smart Factory / IoT</strong><br>• <strong>AI Vision Systems</strong>';
+    if (/automation/.test(q))
+        return '⚙️ We deliver end-to-end <strong>industrial automation</strong> solutions tailored to your production line. Want to know more?';
+    return '🤔 Great question! Please <strong>contact our team</strong> via the form below or WhatsApp us — we respond within a few hours.';
+}
+
+// ── Page Loader ──
+window.addEventListener('load', function () {
+    var loader = document.getElementById('pageLoader');
+    if (loader) {
+        setTimeout(function () { loader.classList.add('hidden'); }, 600);
+        setTimeout(function () { loader.style.display = 'none'; }, 1200);
+    }
+});
+
+// ── Scroll Reveal Animations ──
+function initReveal() {
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.15 });
+    reveals.forEach(function (el) { observer.observe(el); });
+}
+
+// ── Stats Counter Animation ──
+function initCounters() {
+    var counters = document.querySelectorAll('.stat-number[data-target]');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                var el = entry.target;
+                var target = parseInt(el.getAttribute('data-target'));
+                var duration = 2000;
+                var start = 0;
+                var startTime = null;
+                function animate(time) {
+                    if (!startTime) startTime = time;
+                    var progress = Math.min((time - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(eased * target) + '+';
+                    if (progress < 1) requestAnimationFrame(animate);
+                }
+                requestAnimationFrame(animate);
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { observer.observe(el); });
+}
+
+// ── Active Nav Link Highlighting ──
+function initActiveNav() {
+    var sections = document.querySelectorAll('section[id], header[id]');
+    var navLinks = document.querySelectorAll('.nav-links > a');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                var id = entry.target.getAttribute('id');
+                navLinks.forEach(function (link) {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active-link');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+    sections.forEach(function (s) { observer.observe(s); });
+}
+
+// ── Back to Top Button ──
+function initBackToTop() {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ── Hamburger Menu ──
+function initHamburger() {
+    var btn = document.getElementById('hamburgerBtn');
+    var nav = document.getElementById('navLinks');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+        btn.classList.toggle('active');
+        nav.classList.toggle('open');
+    });
+    // Close menu when a link is clicked
+    nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            btn.classList.remove('active');
+            nav.classList.remove('open');
+        });
+    });
+}
+
+// ── Cookie Banner ──
+function initCookieBanner() {
+    var banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    var accepted = localStorage.getItem('cookiesAccepted');
+    if (!accepted) {
+        setTimeout(function() {
+            banner.classList.add('show');
+        }, 2000);
+    }
+}
+
+function acceptCookies() {
+    var banner = document.getElementById('cookieBanner');
+    if (banner) {
+        banner.classList.remove('show');
+        localStorage.setItem('cookiesAccepted', 'true');
+    }
+}
+
 // ── Wire up events after DOM ready ──
 document.addEventListener('DOMContentLoaded', function () {
+    // Contact form
     var form = document.getElementById('contactForm');
     if (form) {
         form.onsubmit = function (e) {
@@ -145,17 +255,24 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
+    // Chat send button & Enter key
     var sendBtn = document.getElementById('ai-chat-send');
     var chatInp = document.getElementById('ai-chat-input');
-
     if (sendBtn) sendBtn.addEventListener('click', sendChatMessage);
-
     if (chatInp) chatInp.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') sendChatMessage();
     });
+
+    // Initialize new features
+    initReveal();
+    initCounters();
+    initActiveNav();
+    initBackToTop();
+    initHamburger();
+    initCookieBanner();
 });
 
-// Fallback
+// Fallback: wire immediately if DOM already ready
 if (document.readyState !== 'loading') {
     var _s = document.getElementById('ai-chat-send');
     var _i = document.getElementById('ai-chat-input');

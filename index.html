@@ -7,6 +7,13 @@
     <title>Shivam AI Automation - Next-Gen Industrial Solutions</title>
     <meta name="description"
         content="Shivam AI Automation delivers next-generation PLC programming, robotic automation, and smart factory integration solutions powered by AI.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Shivam AI Automation - Next-Gen Industrial Solutions">
+    <meta property="og:description" content="Advanced PLC programming, robotic automation, and smart factory integration powered by AI.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -17,6 +24,11 @@
 </head>
 
 <body>
+
+    <!-- ── Page Loader ── -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-spinner"></div>
+    </div>
 
     <!-- ── Navigation ── -->
     <nav>
@@ -49,7 +61,11 @@
             </span>
         </div>
 
-        <div class="nav-links">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
             <div class="dropdown">
                 <a href="#" class="dropbtn">Home <i class="fa fa-caret-down"></i></a>
                 <div class="dropdown-content">
@@ -59,6 +75,7 @@
                 </div>
             </div>
             <a href="#solutions">Solutions</a>
+            <a href="#process">Process</a>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
         </div>
@@ -77,65 +94,222 @@
         <button class="btn-cta" onclick="toggleDashboard(true)">Get Started</button>
     </header>
 
+    <!-- ── Stats Strip ── -->
+    <section id="stats" style="max-width:100%;">
+        <div class="stats-strip reveal">
+            <div class="stat-item">
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="99">0</div>
+                <div class="stat-label">Uptime Guarantee %</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="12">0</div>
+                <div class="stat-label">Industries Served</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="24">0</div>
+                <div class="stat-label">7 Support Hours</div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── Solutions Section ── -->
     <section id="solutions">
         <h2>Our Solutions</h2>
         <div class="grid">
-
-            <div class="card">
+            <div class="card reveal">
                 <img src="images/industrial1.jpg" alt="Industrial PLC Programming"
                     style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:20px;">
                 <h3 style="color:var(--primary-blue)">Industrial PLC Programming</h3>
                 <p>Custom logic controllers for seamless manufacturing workflows.</p>
             </div>
-
-            <div class="card">
+            <div class="card reveal">
                 <img src="images/industrial2.jpg" alt="Robotic Process Automation"
                     style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:20px;">
                 <h3 style="color:var(--primary-blue)">Robotic Process Automation</h3>
                 <p>End-to-end automation of complex industrial tasks.</p>
             </div>
-
-            <div class="card">
+            <div class="card reveal">
                 <img src="images/industrial3.jpg" alt="Smart Factory Integration"
                     style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:20px;">
                 <h3 style="color:var(--primary-blue)">Smart Factory Integration</h3>
                 <p>IoT solutions for connected, data-driven production plants.</p>
             </div>
+        </div>
+    </section>
 
+    <!-- ── How It Works ── -->
+    <section id="process" style="background:var(--section-alt); max-width:100%; padding:80px 20px;">
+        <h2>How It Works</h2>
+        <div class="process-grid reveal">
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-search"></i></div>
+                <h4>1. Assess</h4>
+                <p>We audit your current systems and identify automation opportunities.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-drafting-compass"></i></div>
+                <h4>2. Design</h4>
+                <p>Custom architecture tailored to your production requirements.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-rocket"></i></div>
+                <h4>3. Deploy</h4>
+                <p>Seamless integration with zero downtime during rollout.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-icon"><i class="fas fa-headset"></i></div>
+                <h4>4. Support</h4>
+                <p>24/7 monitoring, maintenance, and continuous optimization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Testimonials ── -->
+    <section id="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonials-grid reveal">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Shivam AI transformed our production line. We saw a 40% reduction in downtime within the first quarter.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">RK</div>
+                    <div>
+                        <div class="testimonial-name">Rajesh Kumar</div>
+                        <div class="testimonial-role">Plant Manager, TechMfg India</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Their PLC programming expertise is unmatched. Integration with our legacy systems was seamless.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SP</div>
+                    <div>
+                        <div class="testimonial-name">Sneha Patel</div>
+                        <div class="testimonial-role">CTO, AutoWorks Ltd</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Professional team with deep industrial knowledge. ROI was achieved within 6 months of deployment.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">AM</div>
+                    <div>
+                        <div class="testimonial-name">Amit Mehta</div>
+                        <div class="testimonial-role">Director, SmartFactory Co</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Tech Partners Strip ── -->
+    <div class="tech-strip">
+        <div class="tech-scroll">
+            <div class="tech-item"><i class="fas fa-microchip"></i> Siemens</div>
+            <div class="tech-item"><i class="fas fa-cogs"></i> Allen-Bradley</div>
+            <div class="tech-item"><i class="fas fa-robot"></i> FANUC</div>
+            <div class="tech-item"><i class="fas fa-industry"></i> Mitsubishi Electric</div>
+            <div class="tech-item"><i class="fas fa-bolt"></i> ABB Robotics</div>
+            <div class="tech-item"><i class="fas fa-network-wired"></i> Schneider Electric</div>
+            <div class="tech-item"><i class="fas fa-server"></i> Rockwell Automation</div>
+            <div class="tech-item"><i class="fas fa-brain"></i> NVIDIA Jetson</div>
+            <!-- Duplicate for seamless scroll -->
+            <div class="tech-item"><i class="fas fa-microchip"></i> Siemens</div>
+            <div class="tech-item"><i class="fas fa-cogs"></i> Allen-Bradley</div>
+            <div class="tech-item"><i class="fas fa-robot"></i> FANUC</div>
+            <div class="tech-item"><i class="fas fa-industry"></i> Mitsubishi Electric</div>
+            <div class="tech-item"><i class="fas fa-bolt"></i> ABB Robotics</div>
+            <div class="tech-item"><i class="fas fa-network-wired"></i> Schneider Electric</div>
+            <div class="tech-item"><i class="fas fa-server"></i> Rockwell Automation</div>
+            <div class="tech-item"><i class="fas fa-brain"></i> NVIDIA Jetson</div>
+        </div>
+    </div>
+
+    <!-- ── Case Studies ── -->
+    <section id="case-studies" style="background:var(--bg-color); max-width:100%; padding:80px 20px;">
+        <h2>Success Stories</h2>
+        <div class="case-studies-grid reveal">
+            <div class="case-card">
+                <img src="images/vision-transformer.jpg" alt="Automotive Quality Inspection" class="case-img">
+                <div class="case-content">
+                    <span class="case-tag">AI Vision</span>
+                    <h3>Automotive Quality Inspection</h3>
+                    <p>Implemented a Vision Transformer model for sub-millimeter defect detection on a high-speed assembly line.</p>
+                    <div class="case-metric">
+                        <i class="fas fa-chart-line"></i> 99.9% Accuracy Achieved
+                    </div>
+                </div>
+            </div>
+            <div class="case-card">
+                <img src="images/kinematic-sync.jpg" alt="Logistics Swarm Robotics" class="case-img">
+                <div class="case-content">
+                    <span class="case-tag">Robotics</span>
+                    <h3>Logistics Swarm Robotics</h3>
+                    <p>Coordinated 20+ autonomous robots for warehouse sorting using kinematic synchronization algorithms.</p>
+                    <div class="case-metric">
+                        <i class="fas fa-clock"></i> 300% Speed Improvement
+                    </div>
+                </div>
+            </div>
+            <div class="case-card">
+                <img src="images/industrial3.jpg" alt="Predictive Maintenance IoT" class="case-img">
+                <div class="case-content">
+                    <span class="case-tag">Smart Factory</span>
+                    <h3>Predictive Maintenance IoT</h3>
+                    <p>Connected 50+ legacy machines to a cloud AI engine to predict failures before they occur.</p>
+                    <div class="case-metric">
+                        <i class="fas fa-shield-alt"></i> 45% Cost Reduction
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- ── FAQ Section ── -->
-    <section id="faq" style="background:#f8fafc;">
+    <section id="faq" style="background:var(--section-alt); max-width:100%; padding:80px 20px;">
         <h2>Frequently Asked Questions</h2>
         <div style="max-width:800px; margin:0 auto;">
-
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <button class="faq-btn" onclick="toggleFaq(this)">
                     <span>What industries do you specialize in?</span>
                     <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                 </button>
-                <div class="faq-content">Shivam Automation specializes in manufacturing, supply chain, and warehouse
-                    logistics.</div>
+                <div class="faq-content">Shivam Automation specializes in manufacturing, supply chain, and warehouse logistics.</div>
             </div>
-
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <button class="faq-btn" onclick="toggleFaq(this)">
                     <span>How long is implementation?</span>
                     <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                 </button>
                 <div class="faq-content">Implementation typically takes 4 to 12 weeks depending on complexity.</div>
             </div>
-
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <button class="faq-btn" onclick="toggleFaq(this)">
                     <span>Do you support legacy systems?</span>
                     <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                 </button>
                 <div class="faq-content">Yes, we bridge legacy PLCs with modern AI forecasting engines.</div>
             </div>
-
+            <div class="faq-item reveal">
+                <button class="faq-btn" onclick="toggleFaq(this)">
+                    <span>What kind of ROI can we expect?</span>
+                    <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
+                </button>
+                <div class="faq-content">Most clients see a 30-50% improvement in efficiency and achieve full ROI within 6-12 months of deployment.</div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-btn" onclick="toggleFaq(this)">
+                    <span>Do you offer ongoing support?</span>
+                    <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
+                </button>
+                <div class="faq-content">Yes, we provide 24/7 monitoring, preventive maintenance, and continuous optimization as part of our support packages.</div>
+            </div>
         </div>
     </section>
 
@@ -158,15 +332,12 @@
                     <span>Palghar, Maharashtra, India</span>
                 </div>
             </div>
-
             <div class="form-wrapper">
                 <form id="contactForm">
                     <div class="form-grid">
                         <input type="text" id="name" name="name" autocomplete="name" placeholder="Your Name" required>
-                        <input type="email" id="email" name="email" autocomplete="email" placeholder="Business Email"
-                            required>
-                        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Phone Number"
-                            required>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="Business Email" required>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Phone Number" required>
                     </div>
                     <select id="interest" name="interest" required>
                         <option value="">Select Interest</option>
@@ -191,10 +362,52 @@
         </iframe>
     </section>
 
-    <!-- ── Footer ── -->
-    <footer style="padding:40px 20px; text-align:center; border-top:1px solid #eee;">
-        <p style="color:var(--text-muted);">© 2026 Shivam AI Automation. All rights reserved.</p>
+    <!-- ── Professional Footer ── -->
+    <footer class="footer-pro">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="brand-text" style="display:inline-flex;">
+                    <span style="color:var(--primary-blue); font-weight:800; font-size:1.2rem;">SHIVAM AI</span>
+                </span>
+                <p>Delivering next-generation industrial automation solutions powered by artificial intelligence, serving manufacturers across India.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <a href="#solutions">PLC Programming</a>
+                <a href="#solutions">Robotic Automation</a>
+                <a href="#solutions">Smart Factory</a>
+                <a href="#solutions">AI Vision</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#hero">About Us</a>
+                <a href="#process">Our Process</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:contact@shivam-ai.com">Email Us</a>
+                <a href="tel:+919702515105">Call Us</a>
+                <a href="https://wa.me/919702515105">WhatsApp</a>
+                <a href="#location">Location</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shivam AI Automation. All rights reserved. | Built with <i class="fas fa-heart" style="color:#ef4444;"></i> in India</p>
+        </div>
     </footer>
+
+    <!-- ── Back to Top Button ── -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- ── Floating WhatsApp Button ── -->
     <a href="https://wa.me/919702515105" target="_blank" id="wa-float"
@@ -216,15 +429,11 @@
             title="Chat with AI">
             <i class="fas fa-robot"></i>
         </button>
-
         <div id="ai-chat-window"
             style="display:none; position:absolute; bottom:80px; right:0; width:360px; height:520px; background:var(--card-bg); border:1px solid var(--card-border); border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3); flex-direction:column; overflow:hidden;">
-
-            <div
-                style="background:linear-gradient(135deg, var(--primary-blue), #00d4ff); color:white; padding:18px 20px; display:flex; align-items:center; gap:12px; justify-content:space-between;">
+            <div style="background:linear-gradient(135deg, var(--primary-blue), #00d4ff); color:white; padding:18px 20px; display:flex; align-items:center; gap:12px; justify-content:space-between;">
                 <div style="display:flex; align-items:center; gap:12px;">
-                    <div
-                        style="width:38px; height:38px; background:rgba(255,255,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                    <div style="width:38px; height:38px; background:rgba(255,255,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center;">
                         <i class="fas fa-robot"></i>
                     </div>
                     <div>
@@ -237,7 +446,6 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-
             <div id="ai-chat-messages"
                 style="flex:1; padding:16px; overflow-y:auto; display:flex; flex-direction:column; gap:12px; background:var(--bg-color); height:370px;">
                 <div class="ai-msg">
@@ -245,9 +453,7 @@
                     <strong>PLC programming</strong>, <strong>robotics</strong>, or how to get in touch!
                 </div>
             </div>
-
-            <div
-                style="padding:12px 15px; border-top:1px solid var(--card-border); background:var(--card-bg); display:flex; gap:10px; align-items:center;">
+            <div style="padding:12px 15px; border-top:1px solid var(--card-border); background:var(--card-bg); display:flex; gap:10px; align-items:center;">
                 <input type="text" id="ai-chat-input" placeholder="Ask me anything..."
                     style="flex:1; margin-bottom:0 !important; padding:10px 16px !important; border-radius:25px !important; font-size:0.88rem !important;">
                 <button id="ai-chat-send"
@@ -260,39 +466,29 @@
 
     <!-- ── AI Core Dashboard Overlay ── -->
     <div id="dashboard" style="display:none;">
-        <div
-            style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--card-border); padding-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--card-border); padding-bottom:20px;">
             <h1 style="color:var(--secondary-blue); margin:0; letter-spacing:2px;">SHIVAM AI CORE</h1>
             <button onclick="toggleDashboard(false)"
                 style="background:none; border:1px solid var(--text-main); color:var(--text-main); padding:10px 20px; border-radius:30px; cursor:pointer; font-weight:bold;">
                 EXIT SESSION
             </button>
         </div>
-
         <div style="padding:60px 0; max-width:1200px; margin:0 auto;">
             <div class="grid">
                 <div class="card">
-                    <div
-                        style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">
-                        NEURAL POWER</div>
+                    <div style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">NEURAL POWER</div>
                     <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">4.2 PetaFLOPS</div>
                 </div>
                 <div class="card">
-                    <div
-                        style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">
-                        ACTIVE NODES</div>
+                    <div style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">ACTIVE NODES</div>
                     <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">1,284</div>
                 </div>
                 <div class="card">
-                    <div
-                        style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">
-                        LATENCY</div>
+                    <div style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">LATENCY</div>
                     <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">2.4ms</div>
                 </div>
             </div>
-
-            <h2
-                style="text-align:left; margin-top:80px; color:var(--text-main); text-transform:uppercase; letter-spacing:1px;">
+            <h2 style="text-align:left; margin-top:80px; color:var(--text-main); text-transform:uppercase; letter-spacing:1px;">
                 Model Status Registry</h2>
             <div class="grid" style="margin-top:30px;">
                 <div class="card" style="padding:0; overflow:hidden;">
@@ -301,8 +497,7 @@
                     <div style="padding:25px;">
                         <span style="color:var(--secondary-blue); font-size:0.8rem; font-weight:bold;">VISION</span>
                         <h3 style="margin:10px 0;">Vision Transformer</h3>
-                        <p style="color:var(--text-muted); font-size:0.9rem;">Sub-millimeter defect detection active on
-                            Line 4.</p>
+                        <p style="color:var(--text-muted); font-size:0.9rem;">Sub-millimeter defect detection active on Line 4.</p>
                     </div>
                 </div>
                 <div class="card" style="padding:0; overflow:hidden;">
@@ -316,6 +511,12 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- ── Cookie Banner ── -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+        <button class="cookie-btn" onclick="acceptCookies()">Accept</button>
     </div>
 
     <!-- ── Main JavaScript ── -->
