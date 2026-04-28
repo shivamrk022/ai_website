@@ -8,7 +8,7 @@
 ![Font Awesome](https://img.shields.io/badge/Font_Awesome-528DD7?style=for-the-badge&logo=font-awesome&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=white)
 
-**A modern, fully responsive industrial automation website with AI chatbot, dark/light mode, and interactive UI components.**
+**A high-end, fully responsive industrial automation website with professional UI/UX, AI chatbot, and interactive business sections.**
 
 [🌐 Live Demo](https://shivamrk022.github.io/ai_website/) &nbsp;|&nbsp; [📁 Repository](https://github.com/shivamrk022/ai_website) &nbsp;|&nbsp; [💬 WhatsApp](https://wa.me/919702515105)
 
@@ -19,57 +19,49 @@
 ## 📌 Table of Contents
 
 - [About the Project](#-about-the-project)
-- [Features](#-features)
+- [New Professional Features](#-new-professional-features)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
-- [How to Update & Push](#-how-to-update--push)
 - [Sections Overview](#-sections-overview)
-- [Dark Mode](#-dark-mode)
-- [AI Chatbot](#-ai-chatbot)
+- [How to Update & Push](#-how-to-update--push)
 - [Contact](#-contact)
-- [License](#-license)
 
 ---
 
 ## 🚀 About the Project
 
-**Shivam AI Automation** is a professional business website for an industrial automation company. It showcases AI-powered solutions including PLC Programming, Robotic Process Automation, and Smart Factory Integration. The site features a modern dark-themed design with glassmorphism effects, smooth animations, and a fully functional AI assistant chatbot.
-
-> Built with pure **HTML, CSS, and JavaScript** — no frameworks, no dependencies, loads instantly.
+**Shivam AI Automation** is a premium business platform for industrial automation services. It showcases advanced solutions like PLC Programming, Robotic Process Automation, and Smart Factory Integration. The site features a state-of-the-art dark-themed design with glassmorphism, professional scroll-reveal animations, and high-conversion business sections.
 
 ---
 
-## ✨ Features
+## ✨ New Professional Features
 
 | Feature | Description |
 |---|---|
-| 🌙 **Dark / Light Mode** | Persistent theme toggle saved to `localStorage` |
+| ⏳ **Page Loader** | Branded splash screen that fades out once assets are ready |
+| 🎞️ **Scroll Reveal** | IntersectionObserver powered fade-up animations for all sections |
+| 📊 **Stats Counter** | Animated numeric counters for project delivery and uptime metrics |
+| 🚀 **Case Studies** | Success stories section featuring real-world AI & Robotics projects |
+| 🌟 **Testimonials** | Professional client review cards with avatars and star ratings |
+| ⚙️ **Process Timeline** | "Assess → Design → Deploy → Support" industrial workflow guide |
+| ♾️ **Tech Strip** | Infinite scrolling ticker of technology partners (Siemens, ABB, etc.) |
+| 📱 **Mobile Hamburger** | Professional slide-in navigation menu for mobile users |
+| 🔝 **Back-to-Top** | Smooth-scrolling fixed button for better UX |
+| 🍪 **Cookie Banner** | Privacy notice with local storage persistence |
+| 🌙 **Dark/Light Mode** | Persistent theme toggle saved to `localStorage` |
 | 🤖 **AI Chatbot** | Smart keyword-based assistant for industrial queries |
-| 📱 **WhatsApp Button** | Floating one-click WhatsApp contact button |
-| 📋 **Contact Form** | Full enquiry form with validation |
-| ❓ **FAQ Accordion** | Animated expandable FAQ section |
-| 🏭 **Solutions Cards** | Industry service showcase with gradient banners |
-| 📊 **AI Dashboard** | Fullscreen interactive AI core metrics overlay |
-| 🗺️ **Location Map** | Embedded Google Maps section |
-| 📍 **Sticky Navigation** | Glassmorphism navbar with dropdown menus |
-| ⚡ **Hero Video** | Animated circuit board video background |
-| 🎨 **Gradient Animations** | SVG logo with animated rotating particles |
-| 📱 **Fully Responsive** | Works on all screen sizes |
-| 🔒 **Offline-Ready** | Card images use pure CSS gradients + inline SVGs |
+| 🔍 **SEO & OG Tags** | Optimized meta tags for search engines and social sharing |
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **HTML5** — Semantic page structure
-- **CSS3** — Custom properties, glassmorphism, animations, dark mode
-- **Vanilla JavaScript** — Chatbot engine, theme toggle, FAQ accordion, form handling
-- **Font Awesome 6.5** — Icons (CDN + local fallback)
-- **Google Fonts** — Inter font family
-- **Google Maps** — Embedded location iframe
-
-> **No React. No Vue. No Tailwind. No build step required.**
+- **HTML5** — Semantic page structure & SEO optimization
+- **CSS3** — Custom properties, flexbox/grid, glassmorphism, keyframe animations
+- **Vanilla JavaScript** — IntersectionObserver API, Chatbot engine, Theme logic, Mobile Menu
+- **Font Awesome 6.5** — Premium iconography
+- **Google Fonts** — Inter font family (800 weight for branding)
 
 ---
 
@@ -78,143 +70,67 @@
 ```
 ai_website/
 │
-├── index.html              # Main website file (HTML structure only)
+├── index.html              # Main website file (Professional Rebuild)
 ├── css/
-│   └── style.css           # All styles, themes, and animations
+│   └── style.css           # Premium styles, animations, and dark mode
 ├── js/
-│   └── app.js              # Theme toggle, chatbot, dashboard, and form logic
-├── images/                 # Local card images
+│   └── app.js              # Loader, Reveal, Counters, Nav, and Chat logic
+├── images/                 # Project assets
 │   ├── industrial1.jpg     # PLC Programming card
 │   ├── industrial2.jpg     # Robotic Automation card
 │   ├── industrial3.jpg     # Smart Factory card
-│   ├── vision-transformer.jpg  # Dashboard - Vision AI card
-│   └── kinematic-sync.jpg      # Dashboard - Robotics card
+│   ├── vision-transformer.jpg  # Vision AI Case Study
+│   └── kinematic-sync.jpg      # Robotics Case Study
 │
-├── .gitignore              # Git ignore rules
+├── .gitignore              # Git ignore rules (includes .env exclusion)
 ├── push-to-github.bat      # One-click auto push script (Windows)
 └── README.md               # Project documentation
 ```
 
 ---
 
-## 🏁 Getting Started
+## 📄 Sections Overview
 
-### Option 1 — Open directly (simplest)
-```
-1. Clone or download this repo
-2. Double-click index.html
-3. Opens in your browser instantly — no server needed
-```
+### 🏁 Branded Loader
+A custom entrance animation that prevents "flash of unstyled content" and creates a premium first impression.
 
-### Option 2 — Clone via Git
-```bash
-git clone https://github.com/shivamrk022/ai_website.git
-cd ai_website
-# Open index.html in your browser
-start index.html
-```
+### 🏠 Hero Section
+- Full-screen circuit board video background with glassmorphism overlay.
+- High-conversion Call to Action opening the **AI Core Dashboard**.
 
-### Option 3 — VS Code Live Server
-```
-1. Open folder in VS Code
-2. Install "Live Server" extension
-3. Right-click index.html → Open with Live Server
-```
+### 📈 Stats Strip
+Four animated counters highlighting project volume, 99.9% uptime, global industry reach, and 24/7 support.
+
+### 🏭 Our Solutions
+Service cards with hover-lift effects showcasing:
+- **Industrial PLC Programming**
+- **Robotic Process Automation**
+- **Smart Factory Integration**
+
+### 🏗️ Our Process
+A numbered timeline section that clarifies the business workflow from assessment to support.
+
+### 📚 Success Stories
+Grid of case studies showing specific ROI and technical achievements in AI and Robotics.
+
+### 💬 Testimonials
+Grid of 5-star reviews from industry leaders, building instant trust with potential clients.
+
+### 🤝 Tech Partners
+An infinite-scroll ticker displaying compatibility with industry giants like Siemens, Allen-Bradley, and ABB.
+
+### 📬 Contact & Location
+- Business enquiry form with smart validation.
+- Integrated Google Maps with Palghar headquarters location.
 
 ---
 
 ## 🔄 How to Update & Push
 
-After making any changes to the project, push to GitHub using the included script:
-
-### Windows (Double-click)
-```
-📁 ai_website/
-  └── 🖱️ push-to-github.bat  ← just double-click this!
-```
-
-### Manual (Terminal)
-```bash
-git add -A
-git commit -m "Your update message"
-git push origin main
-```
-
-### Enable GitHub Pages (Free Hosting)
-1. Go to → **Settings → Pages**
-2. Source: **main** branch → **/ (root)**
-3. Save → your site is live at:
-   > `https://shivamrk022.github.io/ai_website/`
-
----
-
-## 📄 Sections Overview
-
-### 🏠 Hero Section
-- Full-screen animated circuit board video background
-- Gradient overlay with headline and CTA button
-- Opens **AI Core Dashboard** overlay on click
-
-### 🏭 Our Solutions
-Three service cards with gradient banners and inline SVG icons:
-- **Industrial PLC Programming** — Custom Siemens, Allen-Bradley, Mitsubishi logic
-- **Robotic Process Automation** — End-to-end pick-and-place, welding, assembly
-- **Smart Factory Integration** — IoT dashboards, sensor networks, Industry 4.0
-
-### ❓ FAQ
-Accordion-style expandable questions covering:
-- Industry specializations
-- Implementation timelines
-- Legacy system support
-
-### 📬 Contact Form
-- Name, Email, Phone inputs
-- Interest selector (Robotics / PLC / AI Vision)
-- Project requirements textarea
-- Confirmation alert on submit
-
-### 📊 AI Core Dashboard
-Fullscreen overlay showing:
-- Neural Power: 4.2 PetaFLOPS
-- Active Nodes: 1,284
-- Latency: 2.4ms
-- Vision Transformer status card
-- Kinematic Sync status card
-
-### 🗺️ Our Location
-- Embedded Google Maps (Palghar, Maharashtra)
-- Auto-inverted in dark mode for visual consistency
-
----
-
-## 🌙 Dark Mode
-
-The theme toggle button (☀️/🌙) switches between light and dark themes:
-- **Saves preference** to `localStorage` — persists across page refreshes
-- **Dark palette**: `#010409` background, `#161b22` cards, `#58a6ff` accents
-- **Light palette**: Pure white background, standard blue accents
-- All elements including nav, cards, forms, FAQ, footer adapt automatically
-
----
-
-## 🤖 AI Chatbot
-
-The floating robot button opens an AI assistant that understands queries about:
-
-| Keyword | Response Topic |
-|---|---|
-| `plc`, `siemens`, `allen` | PLC programming services |
-| `robot`, `robotic` | Robotic automation |
-| `iot`, `smart factory` | Industry 4.0 solutions |
-| `price`, `cost`, `quote` | Pricing information |
-| `contact`, `email`, `phone` | Contact details |
-| `time`, `weeks`, `duration` | Implementation timeline |
-| `hello`, `hi`, `hey` | Greeting response |
-
-Features:
-- ✅ Typing indicator animation (`...`)
-- ✅ Markdown-style `<strong>` bold in replies
-- ✅ Fully works offline — no API needed
+1.  Make your changes in VS Code.
+2.  Double-click `push-to-github.bat` in your folder.
+3.  Enter a commit message.
+4.  Your site will automatically update on GitHub Pages!
 
 ---
 
@@ -227,17 +143,6 @@ Features:
 | 📧 Email | contact@shivam-ai.com |
 | 💬 WhatsApp | [+91 97025 15105](https://wa.me/919702515105) |
 | 🐙 GitHub | [@shivamrk022](https://github.com/shivamrk022) |
-| 🌐 Website | [shivam-maurya-645957.netlify.app](https://shivam-maurya-645957.netlify.app) |
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** — free to use, modify and distribute.
-
-```
-MIT License © 2026 Shivam Maurya
-```
 
 ---
 
