@@ -5,138 +5,97 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Font Awesome](https://img.shields.io/badge/Font_Awesome-528DD7?style=for-the-badge&logo=font-awesome&logoColor=white)
-![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 
-**A high-end, fully responsive industrial automation website with professional UI/UX, AI chatbot, and interactive business sections.**
+**A comprehensive, fully-responsive industrial automation platform featuring advanced UI/UX, AI core analytics, and a Python-powered backend service.**
 
-[🌐 Live Demo](https://shivamrk022.github.io/ai_website/) &nbsp;|&nbsp; [📁 Repository](https://github.com/shivamrk022/ai_website) &nbsp;|&nbsp; [💬 WhatsApp](https://wa.me/919702515105)
+[🌐 Live Demo](https://shivamrk022.github.io/ai_website/) &nbsp;|&nbsp; [💬 WhatsApp](https://wa.me/919702515105)
 
 </div>
 
 ---
 
-## 📌 Table of Contents
+## 📁 Project Directory Overview
 
-- [About the Project](#-about-the-project)
-- [New Professional Features](#-new-professional-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Sections Overview](#-sections-overview)
-- [How to Update & Push](#-how-to-update--push)
-- [Contact](#-contact)
-
----
-
-## 🚀 About the Project
-
-**Shivam AI Automation** is a premium business platform for industrial automation services. It showcases advanced solutions like PLC Programming, Robotic Process Automation, and Smart Factory Integration. The site features a state-of-the-art dark-themed design with glassmorphism, professional scroll-reveal animations, and high-conversion business sections.
-
----
-
-## ✨ New Professional Features
-
-| Feature | Description |
-|---|---|
-| ⏳ **Page Loader** | Branded splash screen that fades out once assets are ready |
-| 🎞️ **Scroll Reveal** | IntersectionObserver powered fade-up animations for all sections |
-| 📊 **Stats Counter** | Animated numeric counters for project delivery and uptime metrics |
-| 🚀 **Case Studies** | Success stories section featuring real-world AI & Robotics projects |
-| 🌟 **Testimonials** | Professional client review cards with avatars and star ratings |
-| ⚙️ **Process Timeline** | "Assess → Design → Deploy → Support" industrial workflow guide |
-| ♾️ **Tech Strip** | Infinite scrolling ticker of technology partners (Siemens, ABB, etc.) |
-| 📱 **Mobile Hamburger** | Professional slide-in navigation menu for mobile users |
-| 🔝 **Back-to-Top** | Smooth-scrolling fixed button for better UX |
-| 🍪 **Cookie Banner** | Privacy notice with local storage persistence |
-| 🌙 **Dark/Light Mode** | Persistent theme toggle saved to `localStorage` |
-| 🤖 **AI Chatbot** | Smart keyword-based assistant for industrial queries |
-| 🔍 **SEO & OG Tags** | Optimized meta tags for search engines and social sharing |
-
----
-
-## 🛠️ Tech Stack
-
-- **HTML5** — Semantic page structure & SEO optimization
-- **CSS3** — Custom properties, flexbox/grid, glassmorphism, keyframe animations
-- **Vanilla JavaScript** — IntersectionObserver API, Chatbot engine, Theme logic, Mobile Menu
-- **Font Awesome 6.5** — Premium iconography
-- **Google Fonts** — Inter font family (800 weight for branding)
-
----
-
-## 📁 Project Structure
+Here is the complete structure of the **Shivam AI Automation** project:
 
 ```
-ai_website/
-│
-├── index.html              # Main website file (Professional Rebuild)
+website/
+├── index.html              # Core Frontend (Premium Professional Rebuild)
 ├── css/
-│   └── style.css           # Premium styles, animations, and dark mode
+│   └── style.css           # Design System (Glassmorphism, Animations, Dark/Light Themes)
 ├── js/
-│   └── app.js              # Loader, Reveal, Counters, Nav, and Chat logic
-├── images/                 # Project assets
-│   ├── industrial1.jpg     # PLC Programming card
-│   ├── industrial2.jpg     # Robotic Automation card
-│   ├── industrial3.jpg     # Smart Factory card
-│   ├── vision-transformer.jpg  # Vision AI Case Study
-│   └── kinematic-sync.jpg      # Robotics Case Study
-│
-├── .gitignore              # Git ignore rules (includes .env exclusion)
-├── push-to-github.bat      # One-click auto push script (Windows)
-└── README.md               # Project documentation
+│   └── app.js              # Logic (Loader, Scroll Reveal, Counters, Mobile Menu, Chat)
+├── images/                 # Local Visual Assets
+│   ├── industrial1.jpg     # PLC Programming thumbnail
+│   ├── industrial2.jpg     # Robotic Automation thumbnail
+│   ├── industrial3.jpg     # Smart Factory thumbnail
+│   ├── vision-transformer.jpg  # Vision AI Case Study asset
+│   └── kinematic-sync.jpg      # Robotics Case Study asset
+├── backend/                # Server-Side Integration
+│   ├── app.py              # Python Flask API for advanced AI processing
+│   ├── requirements.txt    # Python dependencies
+│   └── .env                # Local environment variables (Git ignored for security)
+├── .gitignore              # Rules for excluding sensitive/temp files from Git
+├── push-to-github.bat      # One-click automation script for Windows users
+└── README.md               # Documentation (You are here)
 ```
 
 ---
 
-## 📄 Sections Overview
+## 🚀 Key Features & Upgrades
 
-### 🏁 Branded Loader
-A custom entrance animation that prevents "flash of unstyled content" and creates a premium first impression.
+### 🎨 Frontend Excellence
+- **Page Loader:** A custom branded splash screen that ensures a smooth, premium entrance.
+- **Scroll Reveal Animations:** Sections and elements fade/slide into view as the user scrolls (powered by `IntersectionObserver`).
+- **Interactive Stats Strip:** Animated numeric counters that highlight business success metrics.
+- **Dynamic Case Studies:** Success stories with metric badges showing ROI and efficiency gains.
+- **Infinite Logo Ticker:** A scrolling marquee showcasing compatibility with industry leaders like Siemens and ABB.
+- **Mobile Menu:** A professional, fully-responsive hamburger menu for seamless mobile navigation.
+- **Theme Toggle:** Persistent Dark/Light mode switcher saved to `localStorage`.
+- **AI Core Dashboard:** A full-screen interactive overlay showing real-time neural network metrics.
 
-### 🏠 Hero Section
-- Full-screen circuit board video background with glassmorphism overlay.
-- High-conversion Call to Action opening the **AI Core Dashboard**.
+### 🤖 Intelligent Features
+- **AI Chatbot Assistant:** A keyword-aware floating assistant that answers industrial automation queries.
+- **Back-to-Top UX:** A smooth-scrolling fixed button that appears after scrolling past the fold.
+- **Cookie Privacy Banner:** A professional compliance notice with user consent memory.
+- **WhatsApp Integration:** Floating one-click contact button for instant business enquiries.
 
-### 📈 Stats Strip
-Four animated counters highlighting project volume, 99.9% uptime, global industry reach, and 24/7 support.
-
-### 🏭 Our Solutions
-Service cards with hover-lift effects showcasing:
-- **Industrial PLC Programming**
-- **Robotic Process Automation**
-- **Smart Factory Integration**
-
-### 🏗️ Our Process
-A numbered timeline section that clarifies the business workflow from assessment to support.
-
-### 📚 Success Stories
-Grid of case studies showing specific ROI and technical achievements in AI and Robotics.
-
-### 💬 Testimonials
-Grid of 5-star reviews from industry leaders, building instant trust with potential clients.
-
-### 🤝 Tech Partners
-An infinite-scroll ticker displaying compatibility with industry giants like Siemens, Allen-Bradley, and ABB.
-
-### 📬 Contact & Location
-- Business enquiry form with smart validation.
-- Integrated Google Maps with Palghar headquarters location.
+### ⚙️ Technical Foundation
+- **Professional Layout:** Full-width sections with centered content containers for a modern look.
+- **SEO Optimization:** Optimized meta tags and Open Graph protocol for better search visibility and social sharing.
+- **Robust Git Workflow:** Automated Windows batch script for seamless repository updates.
+- **Security:** `.gitignore` configured to protect sensitive `.env` files and cache directories.
 
 ---
 
-## 🔄 How to Update & Push
+## 🏁 Getting Started
 
-1.  Make your changes in VS Code.
-2.  Double-click `push-to-github.bat` in your folder.
-3.  Enter a commit message.
-4.  Your site will automatically update on GitHub Pages!
+### 1. View the Website
+Simply open `index.html` in any modern web browser to view the frontend immediately.
+
+### 2. Run the Backend
+To activate the Python API services:
+```bash
+cd backend
+pip install -r requirements.txt
+python app.py
+```
+
+---
+
+## 🔄 Automated Deployment
+This project includes a `push-to-github.bat` file. To sync your local changes to GitHub:
+1. Double-click the file.
+2. Enter your commit message when prompted.
+3. Your live site will update automatically!
 
 ---
 
 ## 📞 Contact
 
-**Shivam Maurya**
+**Shivam Maurya** — Powering Industrial Automation with AI
 
 | Platform | Link |
 |---|---|
@@ -144,12 +103,6 @@ An infinite-scroll ticker displaying compatibility with industry giants like Sie
 | 💬 WhatsApp | [+91 97025 15105](https://wa.me/919702515105) |
 | 🐙 GitHub | [@shivamrk022](https://github.com/shivamrk022) |
 
----
-
 <div align="center">
-
-⭐ **If you found this project helpful, please give it a star on GitHub!** ⭐
-
-Made with ❤️ by **Shivam Maurya** — Powering Industrial Automation with AI
-
+⭐ Star this repo if you find it useful!
 </div>
