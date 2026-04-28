@@ -1,0 +1,23 @@
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv("GOOGLE_API_KEY")
+
+if not api_key:
+    print("ERROR: GOOGLE_API_KEY not found")
+else:
+    try:
+        genai.configure(api_key=api_key)
+        print("Listing available models:")
+        for m in genai.list_models():
+            if 'generateContent' in m.supported_generation_methods:
+                print(f"- {m.name}")
+        
+        # Try gemini-pro as a fallback
+        model = genai.GenerativeModel("gemini-pro")
+        response = model.generate_content("Hello")
+        print(f"SUCCESS: {response.text}")
+    except Exception as e:
+        print(f"ERROR: {str(e)}")
