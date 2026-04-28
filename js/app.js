@@ -58,19 +58,57 @@ function toggleChat() {
     }
 }
 
-function sendChatMessage() {
+// 🔥 Send message to Python backend with error handling
+async function sendMessageToAI(message) {
+    try {
+        console.log("📤 Sending to backend:", message);
+        
+        const response = await fetch("http://localhost:5000/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message: message })
+        });
+
+        console.log("Response status:", response.status);
+        const data = await response.json();
+        console.log("Response data:", data);
+        
+        if (response.ok && data.reply) {
+            return data.reply;
+        } else {
+            return data.reply || "Unable to connect to AI server";
+        }
+
+    } catch (error) {
+        console.error("❌ Fetch Error:", error);
+        return "⚠️ Could not connect to AI server. Make sure the backend is running on http://localhost:5000";
+    }
+}
+
+// 🔥 UPDATED: Send Chat Message to AI
+async function sendChatMessage() {
     var inp = document.getElementById('ai-chat-input');
     var msgs = document.getElementById('ai-chat-messages');
     if (!inp || !msgs) return;
+
     var text = inp.value.trim();
     if (!text) return;
+
     addMsg(text, 'user', msgs);
     inp.value = '';
+
     var dot = addTyping(msgs);
-    setTimeout(function () {
-        if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
-        addMsg(getBotReply(text), 'ai', msgs);
-    }, 800 + Math.random() * 700);
+    
+    // Get AI response
+    let botReply = await sendMessageToAI(text);
+    
+    // Remove typing indicator
+    if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
+    
+    // Add AI response
+    addMsg(botReply || "Sorry, I couldn't generate a response", 'ai', msgs);
 }
 
 function addMsg(text, role, msgs) {
@@ -90,34 +128,8 @@ function addTyping(msgs) {
     return d;
 }
 
-function getBotReply(msg) {
-    var q = msg.toLowerCase();
-    if (/plc|programmable|logic controller/.test(q))
-        return '🔧 We specialise in <strong>custom PLC programming</strong> — covering Siemens, Allen-Bradley, Mitsubishi & more. Want a free consultation?';
-    if (/robot|robotic/.test(q))
-        return '🤖 Our <strong>Robotic Process Automation</strong> service handles pick-and-place, welding, assembly, and more end-to-end.';
-    if (/smart factory|iot|industry 4/.test(q))
-        return '🏭 We integrate <strong>IoT & Smart Factory</strong> solutions — connecting machines, sensors and data into one unified dashboard.';
-    if (/price|cost|quote|pricing/.test(q))
-        return '💰 Pricing depends on project scope. Fill our <strong>contact form</strong> below or WhatsApp us for a free estimate!';
-    if (/contact|email|phone|whatsapp|reach/.test(q))
-        return '📬 Reach us at <strong>contact@shivam-ai.com</strong> or WhatsApp <strong>+91 97025 15105</strong>.';
-    if (/time|duration|long|week|implement/.test(q))
-        return '⏱️ Implementation typically takes <strong>4 to 12 weeks</strong> depending on project complexity.';
-    if (/hello|hi|hey|morning|afternoon/.test(q))
-        return '👋 Hey there! How can I help you with <strong>industrial automation</strong> today?';
-    if (/thank|thanks/.test(q))
-        return "😊 You're welcome! Feel free to ask anything else.";
-    if (/service|offer|provide|solution/.test(q))
-        return '🛠️ We offer:<br>• <strong>PLC Programming</strong><br>• <strong>Robotic Automation</strong><br>• <strong>Smart Factory / IoT</strong><br>• <strong>AI Vision Systems</strong>';
-    if (/automation/.test(q))
-        return '⚙️ We deliver end-to-end <strong>industrial automation</strong> solutions tailored to your production line. Want to know more?';
-    return '🤔 Great question! Please <strong>contact our team</strong> via the form below or WhatsApp us — we respond within a few hours.';
-}
-
 // ── Wire up events after DOM ready ──
 document.addEventListener('DOMContentLoaded', function () {
-    // Contact form
     var form = document.getElementById('contactForm');
     if (form) {
         form.onsubmit = function (e) {
@@ -133,16 +145,17 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
-    // Chat send button & Enter key
     var sendBtn = document.getElementById('ai-chat-send');
     var chatInp = document.getElementById('ai-chat-input');
+
     if (sendBtn) sendBtn.addEventListener('click', sendChatMessage);
+
     if (chatInp) chatInp.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') sendChatMessage();
     });
 });
 
-// Fallback: wire immediately if DOM already ready
+// Fallback
 if (document.readyState !== 'loading') {
     var _s = document.getElementById('ai-chat-send');
     var _i = document.getElementById('ai-chat-input');

@@ -13,3 +13,8 @@ encoded.txt
 
 # Node (if ever used)
 node_modules/
+
+# Environment and Python
+.env
+__pycache__/
+*.pyc
