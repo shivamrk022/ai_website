@@ -57,7 +57,7 @@ website/
 - **AI Core Dashboard:** A full-screen interactive overlay showing real-time neural network metrics.
 
 ### 🤖 Intelligent Features
-- **AI Chatbot Assistant:** A keyword-aware floating assistant that answers industrial automation queries.
+- **AI Chatbot Assistant:** A high-intelligence assistant powered by **Google Gemini AI** (with keyword-aware local fallback) that answers complex industrial automation queries.
 - **Back-to-Top UX:** A smooth-scrolling fixed button that appears after scrolling past the fold.
 - **Cookie Privacy Banner:** A professional compliance notice with user consent memory.
 - **WhatsApp Integration:** Floating one-click contact button for instant business enquiries.

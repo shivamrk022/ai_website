@@ -67,10 +67,24 @@ function sendChatMessage() {
     addMsg(text, 'user', msgs);
     inp.value = '';
     var dot = addTyping(msgs);
-    setTimeout(function () {
+
+    // Try to fetch from backend
+    fetch('http://localhost:5000/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+        if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
+        addMsg(data.reply || getBotReply(text), 'ai', msgs);
+    })
+    .catch(function(err) {
+        // Fallback to local response if backend is offline
+        console.log('Backend offline, using local fallback');
         if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
         addMsg(getBotReply(text), 'ai', msgs);
-    }, 800 + Math.random() * 700);
+    });
 }
 
 function addMsg(text, role, msgs) {
