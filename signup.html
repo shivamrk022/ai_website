@@ -165,6 +165,9 @@
         </div>
     </div>
 
+    <!-- Configuration -->
+    <script src="js/config.js"></script>
+
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         let isSignUp = false;
@@ -245,9 +248,11 @@
             const password = document.getElementById('password-input').value;
             const name = document.getElementById('signup-name').value;
             const endpoint = isSignUp ? '/signup' : '/login';
+            
+            const baseUrl = typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://127.0.0.1:5000';
 
             try {
-                const res = await fetch('http://127.0.0.1:5000' + endpoint, {
+                const res = await fetch(baseUrl + endpoint, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ email, password, name })
@@ -324,7 +329,8 @@
             const decoded = JSON.parse(atob(response.credential.split('.')[1]));
             
             try {
-                const res = await fetch('http://127.0.0.1:5000/google-login', {
+                const baseUrl = typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://127.0.0.1:5000';
+                const res = await fetch(baseUrl + '/google-login', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ 

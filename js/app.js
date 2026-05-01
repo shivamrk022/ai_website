@@ -94,7 +94,8 @@ function sendChatMessage() {
 
     var dot = addTyping(msgs);
 
-    fetch('http://localhost:5000/chat', {
+    var baseUrl = typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://localhost:5000';
+    fetch(baseUrl + '/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text })
@@ -305,7 +306,8 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
             submitBtn.disabled = true;
 
-            fetch('http://localhost:5000/change-password', {
+            const baseUrlPw = typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://localhost:5000';
+            fetch(baseUrlPw + '/change-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, oldPassword, newPassword })
@@ -396,8 +398,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 const formData = new FormData();
                 formData.append('file', blob, 'profile.jpg');
                 formData.append('email', email);
-
-                fetch('http://localhost:5000/upload-profile-picture', {
+                const baseUrl = typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://localhost:5000';
+                fetch(baseUrl + '/upload-profile-picture', {
                     method: 'POST',
                     body: formData
                 })
@@ -456,8 +458,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 btnRemove.innerText = 'Removing...';
                 btnRemove.disabled = true;
             }
-
-            fetch('http://localhost:5000/remove-profile-picture', {
+            const baseUrl = typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : 'http://localhost:5000';
+            fetch(baseUrl + '/remove-profile-picture', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email })
