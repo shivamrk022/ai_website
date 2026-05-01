@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,8 @@
         content="Shivam AI Automation delivers next-generation PLC programming, robotic automation, and smart factory integration solutions powered by AI.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Shivam AI Automation - Next-Gen Industrial Solutions">
-    <meta property="og:description" content="Advanced PLC programming, robotic automation, and smart factory integration powered by AI.">
+    <meta property="og:description"
+        content="Advanced PLC programming, robotic automation, and smart factory integration powered by AI.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,9 +22,22 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Cropper.js -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+    <!-- Auth Guard removed to allow public access to landing page -->
+    <script>
+        // We only check auth when protected features are accessed
+    </script>
 </head>
 
 <body>
+    <!-- ── Scroll Progress Indicator ── -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollBar"></div>
+    </div>
 
     <!-- ── Page Loader ── -->
     <div class="page-loader" id="pageLoader">
@@ -61,17 +75,30 @@
             </span>
         </div>
 
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-
         <div class="nav-links" id="navLinks">
             <div class="dropdown">
-                <a href="#" class="dropbtn">Home <i class="fa fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="#hero">Hero Section</a>
-                    <a href="#solutions">Solutions</a>
-                    <a href="#faq">FAQ</a>
+                <a href="#" class="dropbtn">Explore <i class="fa fa-caret-down"></i></a>
+                <div class="dropdown-content mega-menu">
+                    <div class="mega-grid">
+                        <div class="mega-col">
+                            <h4><i class="fas fa-microchip"></i> Industrial Core</h4>
+                            <a href="#hero">Control Center</a>
+                            <a href="#solutions">AI Solutions</a>
+                            <a href="#stats">Performance Data</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fas fa-sitemap"></i> Resources</h4>
+                            <a href="#process">Deployment Flow</a>
+                            <a href="#faq">Technical FAQ</a>
+                            <a href="#contact">Expert Consultation</a>
+                        </div>
+                        <div class="mega-col">
+                            <h4><i class="fas fa-shield-halved"></i> Support</h4>
+                            <a href="#testimonials">Client Success</a>
+                            <a href="#location">Global Network</a>
+                            <a href="#footer">Privacy & Legal</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <a href="#solutions">Solutions</a>
@@ -79,6 +106,39 @@
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
         </div>
+
+        <div id="nav-user-section" class="nav-user-container">
+            <button id="nav-signup-btn" class="nav-btn-secondary">Sign Up</button>
+
+            <div id="user-profile" style="display:none;" class="profile-dropdown">
+                <div class="profile-badge" onclick="toggleProfileMenu()">
+                    <div class="user-avatar" id="user-avatar-container" style="position:relative; overflow:hidden;">
+                        <span id="user-initial">S</span>
+                        <img id="nav-profile-img" src="" style="width:100%; height:100%; border-radius:50%; object-fit:cover; display:none; position:absolute; top:0; left:0;" alt="Profile">
+                    </div>
+                    <span id="user-display-name" class="user-name">User</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+
+                <div id="profile-menu" class="profile-menu">
+                    <div class="menu-header">
+                        <strong id="menu-user-name">User Name</strong>
+                        <span id="menu-user-email">user@example.com</span>
+                    </div>
+                    <div class="menu-divider"></div>
+                    <a href="javascript:void(0)" onclick="toggleDashboard(true)"><i class="fas fa-tachometer-alt"></i>
+                        Dashboard</a>
+                    <a href="javascript:void(0)" onclick="openSettings()"><i class="fas fa-user-cog"></i> Settings</a>
+                    <div class="menu-divider"></div>
+                    <a href="javascript:void(0)" onclick="logout()" class="logout-btn"><i
+                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <!-- ── Hero Section ── -->
@@ -89,9 +149,20 @@
                 type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
+
+        <div class="hero-badge">
+            <i class="fas fa-microchip"></i> AI CORE V4.2 STABLE
+        </div>
+
         <h1>Advanced Industrial Automation Solutions</h1>
         <p>Deploying next-generation AI efficiency and neural network architectures for modern manufacturing.</p>
-        <button class="btn-cta" onclick="toggleDashboard(true)">Get Started</button>
+
+        <div class="hero-btns">
+            <button class="btn-cta"
+                onclick="if(localStorage.getItem('userName')){toggleDashboard(true)}else{alert('Please Sign Up first to access the Dashboard'); window.location.href='signup.html?mode=signup'}">Get
+                Started</button>
+            <button class="btn-secondary" onclick="alert('Demo stream initiating...')">Watch Demo</button>
+        </div>
     </header>
 
     <!-- ── Stats Strip ── -->
@@ -184,7 +255,8 @@
                     <div class="case-content">
                         <span class="case-tag">AI Vision</span>
                         <h3>Automotive Quality Inspection</h3>
-                        <p>Implemented a Vision Transformer model for sub-millimeter defect detection on a high-speed assembly line.</p>
+                        <p>Implemented a Vision Transformer model for sub-millimeter defect detection on a high-speed
+                            assembly line.</p>
                         <div class="case-metric">
                             <i class="fas fa-chart-line"></i> 99.9% Accuracy Achieved
                         </div>
@@ -195,7 +267,8 @@
                     <div class="case-content">
                         <span class="case-tag">Robotics</span>
                         <h3>Logistics Swarm Robotics</h3>
-                        <p>Coordinated 20+ autonomous robots for warehouse sorting using kinematic synchronization algorithms.</p>
+                        <p>Coordinated 20+ autonomous robots for warehouse sorting using kinematic synchronization
+                            algorithms.</p>
                         <div class="case-metric">
                             <i class="fas fa-clock"></i> 300% Speed Improvement
                         </div>
@@ -223,7 +296,8 @@
             <div class="testimonials-grid reveal">
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Shivam AI transformed our production line. We saw a 40% reduction in downtime within the first quarter.</p>
+                    <p class="testimonial-text">Shivam AI transformed our production line. We saw a 40% reduction in
+                        downtime within the first quarter.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">RK</div>
                         <div>
@@ -234,7 +308,8 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Their PLC programming expertise is unmatched. Integration with our legacy systems was seamless.</p>
+                    <p class="testimonial-text">Their PLC programming expertise is unmatched. Integration with our
+                        legacy systems was seamless.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">SP</div>
                         <div>
@@ -245,7 +320,8 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Professional team with deep industrial knowledge. ROI was achieved within 6 months of deployment.</p>
+                    <p class="testimonial-text">Professional team with deep industrial knowledge. ROI was achieved
+                        within 6 months of deployment.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">AM</div>
                         <div>
@@ -291,7 +367,8 @@
                         <span>What industries do you specialize in?</span>
                         <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                     </button>
-                    <div class="faq-content">Shivam Automation specializes in manufacturing, supply chain, and warehouse logistics.</div>
+                    <div class="faq-content">Shivam Automation specializes in manufacturing, supply chain, and warehouse
+                        logistics.</div>
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-btn" onclick="toggleFaq(this)">
@@ -312,14 +389,16 @@
                         <span>What kind of ROI can we expect?</span>
                         <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                     </button>
-                    <div class="faq-content">Most clients see a 30-50% improvement in efficiency and achieve full ROI within 6-12 months of deployment.</div>
+                    <div class="faq-content">Most clients see a 30-50% improvement in efficiency and achieve full ROI
+                        within 6-12 months of deployment.</div>
                 </div>
                 <div class="faq-item reveal">
                     <button class="faq-btn" onclick="toggleFaq(this)">
                         <span>Do you offer ongoing support?</span>
                         <span style="color:var(--primary-blue); font-size:1.5rem;">+</span>
                     </button>
-                    <div class="faq-content">Yes, we provide 24/7 monitoring, preventive maintenance, and continuous optimization as part of our support packages.</div>
+                    <div class="faq-content">Yes, we provide 24/7 monitoring, preventive maintenance, and continuous
+                        optimization as part of our support packages.</div>
                 </div>
             </div>
         </div>
@@ -348,9 +427,12 @@
                 <div class="form-wrapper">
                     <form id="contactForm">
                         <div class="form-grid">
-                            <input type="text" id="name" name="name" autocomplete="name" placeholder="Your Name" required>
-                            <input type="email" id="email" name="email" autocomplete="email" placeholder="Business Email" required>
-                            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Phone Number" required>
+                            <input type="text" id="name" name="name" autocomplete="name" placeholder="Your Name"
+                                required>
+                            <input type="email" id="email" name="email" autocomplete="email"
+                                placeholder="Business Email" required>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Phone Number"
+                                required>
                         </div>
                         <select id="interest" name="interest" required>
                             <option value="">Select Interest</option>
@@ -378,49 +460,6 @@
         </div>
     </section>
 
-    <!-- ── Professional Footer ── -->
-    <footer class="footer-pro">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="brand-text" style="display:inline-flex;">
-                        <span style="color:var(--primary-blue); font-weight:800; font-size:1.2rem;">SHIVAM AI</span>
-                    </span>
-                    <p>Delivering next-generation industrial automation solutions powered by artificial intelligence, serving manufacturers across India.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Solutions</h4>
-                    <a href="#solutions">PLC Programming</a>
-                    <a href="#solutions">Robotic Automation</a>
-                    <a href="#solutions">Smart Factory</a>
-                    <a href="#solutions">AI Vision</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <a href="#hero">About Us</a>
-                    <a href="#process">Our Process</a>
-                    <a href="#testimonials">Testimonials</a>
-                    <a href="#faq">FAQ</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <a href="mailto:contact@shivam-ai.com">Email Us</a>
-                    <a href="tel:+919702515105">Call Us</a>
-                    <a href="https://wa.me/919702515105">WhatsApp</a>
-                    <a href="#location">Location</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Shivam AI Automation. All rights reserved. | Built with <i class="fas fa-heart" style="color:#ef4444;"></i> in India</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- ── Back to Top Button ── -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
@@ -434,10 +473,89 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- ── Theme Toggle Button ── -->
-    <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
-        <i class="fas fa-moon" id="theme-icon"></i>
-    </button>
+    <!-- ── Section: Industrial Capabilities ── -->
+    <section class="section-capabilities" id="capabilities">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">AGENTIC CORE</span>
+                <h2>Industrial Capabilities</h2>
+                <p>Autonomous agents engineered for sub-millimeter precision and global scale.</p>
+            </div>
+            <div class="capabilities-grid">
+                <div class="cap-card">
+                    <div class="cap-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3>Swarm Coordination</h3>
+                    <p>Dynamic logic that syncs thousands of robotic nodes with 2.4ms latency.</p>
+                </div>
+                <div class="cap-card">
+                    <div class="cap-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Vision Defect Detection</h3>
+                    <p>Neural scanning that identifies microscopic defects in high-speed production lines.</p>
+                </div>
+                <div class="cap-card">
+                    <div class="cap-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Predictive Sync</h3>
+                    <p>Preventing downtime by predicting component failure 48 hours in advance.</p>
+                </div>
+                <div class="cap-card">
+                    <div class="cap-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Autonomous Supply</h3>
+                    <p>AI agents that automatically negotiate and reorder raw materials.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section: Industrial Impact (Stats) ── -->
+    <section class="section-impact">
+        <div class="container">
+            <div class="impact-grid">
+                <div class="stat-item">
+                    <h2 class="glow-text">99.9%</h2>
+                    <span>Precision Rate</span>
+                </div>
+                <div class="stat-item">
+                    <h2 class="glow-text">40%</h2>
+                    <span>Energy Reduction</span>
+                </div>
+                <div class="stat-item">
+                    <h2 class="glow-text">24/7</h2>
+                    <span>Autonomous Ops</span>
+                </div>
+                <div class="stat-item">
+                    <h2 class="glow-text">0.5ms</h2>
+                    <span>Network Latency</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section: Deployment Pipeline ── -->
+    <section class="section-process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Deployment Pipeline</h2>
+                <p>Bringing high-end automation to your factory floor in three stages.</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <h4>Neural Audit</h4>
+                    <p>We create a digital twin to map your existing infrastructure.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <h4>Core Integration</h4>
+                    <p>Agentic logic is embedded into your PLC and SCADA systems.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <h4>Autonomous Flow</h4>
+                    <p>The AI Core takes command, optimizing throughput and safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ── AI Chat Widget ── -->
     <div id="ai-chat-container"
@@ -449,9 +567,11 @@
         </button>
         <div id="ai-chat-window"
             style="display:none; position:absolute; bottom:80px; right:0; width:360px; height:520px; background:var(--card-bg); border:1px solid var(--card-border); border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3); flex-direction:column; overflow:hidden;">
-            <div style="background:linear-gradient(135deg, var(--primary-blue), #00d4ff); color:white; padding:18px 20px; display:flex; align-items:center; gap:12px; justify-content:space-between;">
+            <div
+                style="background:linear-gradient(135deg, var(--primary-blue), #00d4ff); color:white; padding:18px 20px; display:flex; align-items:center; gap:12px; justify-content:space-between;">
                 <div style="display:flex; align-items:center; gap:12px;">
-                    <div style="width:38px; height:38px; background:rgba(255,255,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                    <div
+                        style="width:38px; height:38px; background:rgba(255,255,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center;">
                         <i class="fas fa-robot"></i>
                     </div>
                     <div>
@@ -471,7 +591,8 @@
                     <strong>PLC programming</strong>, <strong>robotics</strong>, or how to get in touch!
                 </div>
             </div>
-            <div style="padding:12px 15px; border-top:1px solid var(--card-border); background:var(--card-bg); display:flex; gap:10px; align-items:center;">
+            <div
+                style="padding:12px 15px; border-top:1px solid var(--card-border); background:var(--card-bg); display:flex; gap:10px; align-items:center;">
                 <input type="text" id="ai-chat-input" placeholder="Ask me anything..."
                     style="flex:1; margin-bottom:0 !important; padding:10px 16px !important; border-radius:25px !important; font-size:0.88rem !important;">
                 <button id="ai-chat-send"
@@ -482,63 +603,404 @@
         </div>
     </div>
 
-    <!-- ── AI Core Dashboard Overlay ── -->
-    <div id="dashboard" style="display:none;">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--card-border); padding-bottom:20px;">
-            <h1 style="color:var(--secondary-blue); margin:0; letter-spacing:2px;">SHIVAM AI CORE</h1>
-            <button onclick="toggleDashboard(false)"
-                style="background:none; border:1px solid var(--text-main); color:var(--text-main); padding:10px 20px; border-radius:30px; cursor:pointer; font-weight:bold;">
-                EXIT SESSION
-            </button>
+    <!-- ── Professional Footer (As per image request) ── -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-col brand-col">
+                    <h2 class="footer-logo">SHIVAM AI</h2>
+                    <p class="footer-desc">Delivering next-generation industrial automation solutions powered by
+                        artificial intelligence, serving manufacturers across India.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Solutions Column -->
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li><a href="#solutions">PLC Programming</a></li>
+                        <li><a href="#solutions">Robotic Automation</a></li>
+                        <li><a href="#solutions">Smart Factory</a></li>
+                        <li><a href="#solutions">AI Vision</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company Column -->
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#hero">About Us</a></li>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:contact@shivam-ai.com">Email Us</a></li>
+                        <li><a href="tel:+919702515105">Call Us</a></li>
+                        <li><a href="https://wa.me/919702515105">WhatsApp</a></li>
+                        <li><a href="#location">Location</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Shivam AI Automation. All rights reserved. | Built with <span
+                        style="color:#ff4d4d">❤️</span> in India</p>
+            </div>
         </div>
-        <div style="padding:60px 0; max-width:1200px; margin:0 auto;">
-            <div class="grid">
-                <div class="card">
-                    <div style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">NEURAL POWER</div>
-                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">4.2 PetaFLOPS</div>
+    </footer>
+
+    <!-- ── AI Core Dashboard (Real-World Enterprise Overhaul) ── -->
+    <div id="dashboard" style="display:none; background: #010409;">
+        <div class="dash-wrapper">
+            <!-- Sidebar Navigation -->
+            <aside class="dash-sidebar">
+                <div class="dash-logo">
+                    <i class="fas fa-microchip"></i>
+                    <span>AI CORE</span>
                 </div>
-                <div class="card">
-                    <div style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">ACTIVE NODES</div>
-                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">1,284</div>
+
+                <nav class="dash-nav">
+                    <a href="javascript:void(0)" class="active" onclick="showDashView('monitor')"><i
+                            class="fas fa-chart-line"></i> Monitor</a>
+                    <a href="javascript:void(0)" onclick="showDashView('robotics')"><i class="fas fa-robot"></i>
+                        Robotics</a>
+                    <a href="javascript:void(0)" onclick="showDashView('security')"><i class="fas fa-shield-halved"></i>
+                        Security</a>
+                    <a href="javascript:void(0)" onclick="alert('Neural Registry requires Level 4 Clearance.')"><i
+                            class="fas fa-database"></i> Registry</a>
+                </nav>
+
+                <div class="dash-footer">
+                    <button onclick="toggleDashboard(false)" class="exit-btn">
+                        <i class="fas fa-power-off"></i> Exit Session
+                    </button>
                 </div>
-                <div class="card">
-                    <div style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; margin-bottom:10px;">LATENCY</div>
-                    <div style="font-size:2.5rem; font-weight:bold; color:var(--secondary-blue)">2.4ms</div>
-                </div>
-            </div>
-            <h2 style="text-align:left; margin-top:80px; color:var(--text-main); text-transform:uppercase; letter-spacing:1px;">
-                Model Status Registry</h2>
-            <div class="grid" style="margin-top:30px;">
-                <div class="card" style="padding:0; overflow:hidden;">
-                    <img src="images/vision-transformer.jpg" alt="Vision Transformer"
-                        style="width:100%; height:180px; object-fit:cover;">
-                    <div style="padding:25px;">
-                        <span style="color:var(--secondary-blue); font-size:0.8rem; font-weight:bold;">VISION</span>
-                        <h3 style="margin:10px 0;">Vision Transformer</h3>
-                        <p style="color:var(--text-muted); font-size:0.9rem;">Sub-millimeter defect detection active on Line 4.</p>
+            </aside>
+
+            <!-- Main Control Area -->
+            <main class="dash-main">
+                <header class="dash-header">
+                    <div class="header-left">
+                        <h1 id="dash-view-title">System Overview</h1>
+                        <span class="status-badge pulse">● SYSTEM ONLINE</span>
+                    </div>
+                    <div class="header-right">
+                        <div class="user-chip">
+                            <div class="dash-avatar-container" style="width:28px; height:28px; border-radius:50%; background:var(--primary-blue); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-right:8px; position:relative;">
+                                <i class="fas fa-user-shield" id="dash-avatar-icon"></i>
+                                <img id="dash-profile-img" src="" style="width:100%; height:100%; object-fit:cover; display:none; position:absolute; top:0; left:0; cursor:pointer;" alt="Profile" onclick="openImageView(this.src)">
+                            </div>
+                            <span id="dash-user-name">Engineer</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- ── View: Monitor ── -->
+                <div id="view-monitor" class="dash-view">
+                    <div class="dash-grid">
+                        <div class="metric-card">
+                            <span class="label">Neural Power</span>
+                            <h3 id="stat-power">4.2 PetaFLOPS</h3>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="label">Active Nodes</span>
+                            <h3 id="stat-nodes">1,284</h3>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="label">Net Latency</span>
+                            <h3 id="stat-latency">2.4ms</h3>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 15%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="viz-card large">
+                            <div class="card-header">
+                                <h4>Kinematic Sync Schematic</h4>
+                                <span class="tag">Live Feed</span>
+                            </div>
+                            <img src="images/industrial-schematic.png" alt="Industrial Schematic" class="dash-img-main">
+                        </div>
+
+                        <div class="viz-card">
+                            <div class="card-header">
+                                <h4>Real-Time Events</h4>
+                                <button class="small-btn" onclick="clearLogs()">Clear</button>
+                            </div>
+                            <div id="dash-logs" class="dash-logs"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="padding:0; overflow:hidden;">
-                    <img src="images/kinematic-sync.jpg" alt="Kinematic Sync"
-                        style="width:100%; height:180px; object-fit:cover;">
-                    <div style="padding:25px;">
-                        <span style="color:#a78bfa; font-size:0.8rem; font-weight:bold;">ROBOTICS</span>
-                        <h3 style="margin:10px 0;">Kinematic Sync</h3>
-                        <p style="color:var(--text-muted); font-size:0.9rem;">Autonomous swarm coordination enabled.</p>
+
+                <!-- ── View: Robotics ── -->
+                <div id="view-robotics" class="dash-view" style="display:none;">
+                    <div class="dash-grid">
+                        <div class="viz-card large">
+                            <div class="card-header">
+                                <h4>Swarm Coordination Control</h4>
+                            </div>
+                            <div style="padding:30px;">
+                                <div class="node-control-item">
+                                    <span>Primary Robotic Arm [Node 01]</span>
+                                    <span class="status-online">Online</span>
+                                    <button class="nav-btn-secondary">Sync</button>
+                                </div>
+                                <div class="node-control-item">
+                                    <span>Autonomous Rover [Node 02]</span>
+                                    <span class="status-online">Online</span>
+                                    <button class="nav-btn-secondary">Sync</button>
+                                </div>
+                                <div class="node-control-item">
+                                    <span>Conveyor Matrix [Node 03]</span>
+                                    <span class="status-warning">Maintenance Required</span>
+                                    <button class="btn-success"
+                                        style="font-size:0.7rem; padding:5px 10px;">Schedule</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viz-card">
+                            <div class="card-header">
+                                <h4>Manual Override</h4>
+                            </div>
+                            <div style="padding:20px; text-align:center;">
+                                <button class="btn-cta" style="background:#f85149; margin-bottom:15px;">EMERGENCY
+                                    STOP</button>
+                                <p style="font-size:0.8rem; color:var(--text-muted);">Warning: Manual override bypasses
+                                    AI safety protocols.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- ── View: Security ── -->
+                <div id="view-security" class="dash-view" style="display:none;">
+                    <div class="dash-grid">
+                        <div class="metric-card">
+                            <span class="label">Encryption Status</span>
+                            <h3>AES-256 Active</h3>
+                        </div>
+                        <div class="metric-card">
+                            <span class="label">Threat Level</span>
+                            <h3 style="color:#3fb950;">Minimal</h3>
+                        </div>
+                        <div class="metric-card">
+                            <span class="label">Firewall Up-time</span>
+                            <h3>1,420 Hours</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
         </div>
     </div>
 
     <!-- ── Cookie Banner ── -->
     <div class="cookie-banner" id="cookieBanner">
-        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+        </p>
         <button class="cookie-btn" onclick="acceptCookies()">Accept</button>
     </div>
 
+    <!-- ── Settings Modal ── -->
+    <div id="settings-modal" class="modal-overlay" style="display:none;">
+        <div class="settings-card">
+            <div class="settings-sidebar">
+                <button onclick="showSettingsTab('appearance')" class="tab-btn active" id="tab-appearance">
+                    <i class="fas fa-palette"></i> Appearance
+                </button>
+                <button onclick="showSettingsTab('account')" class="tab-btn" id="tab-account">
+                    <i class="fas fa-user-circle"></i> Account
+                </button>
+                <button onclick="showSettingsTab('security')" class="tab-btn" id="tab-security">
+                    <i class="fas fa-shield-halved"></i> Security
+                </button>
+                <button onclick="showSettingsTab('notifications')" class="tab-btn" id="tab-notifications">
+                    <i class="fas fa-bell"></i> Notifications
+                </button>
+                <button onclick="showSettingsTab('language')" class="tab-btn" id="tab-language">
+                    <i class="fas fa-globe"></i> Language
+                </button>
+                <button onclick="showSettingsTab('support')" class="tab-btn" id="tab-support">
+                    <i class="fas fa-circle-question"></i> Support
+                </button>
+                <button onclick="closeSettings()" class="settings-close-btn">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+
+            <div class="settings-content">
+                <!-- Appearance Tab -->
+                <div id="settings-appearance" class="settings-tab-content">
+                    <h2>Appearance</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 30px;">Customize your visual
+                        experience.</p>
+                    <div
+                        style="display:flex; align-items:center; justify-content:center; gap:20px; background:rgba(255,255,255,0.03); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
+                        <span style="font-size:0.9rem; font-weight:500; color:var(--text-muted);">Light Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" id="theme-slide-toggle" onclick="toggleTheme()">
+                            <span class="slider round"></span>
+                        </label>
+                        <span style="font-size:0.9rem; font-weight:500; color:var(--text-main);">Dark Mode</span>
+                    </div>
+                </div>
+
+                <!-- Account Tab -->
+                <div id="settings-account" class="settings-tab-content" style="display:none;">
+                    <h2>Account Settings</h2>
+                    
+                    <div class="profile-pic-section" style="display:flex; align-items:center; gap:20px; margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div class="profile-pic-preview" style="width: 80px; height: 80px; border-radius: 50%; background: var(--card-border); overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
+                            <span id="settings-profile-initial" style="font-size: 2rem; font-weight: bold; color: var(--text-main);">S</span>
+                            <img id="settings-profile-img" src="" alt="Profile" style="width:100%; height:100%; object-fit:cover; display:none; position:absolute; top:0; left:0; cursor:pointer;" onclick="openImageView(this.src)">
+                        </div>
+                        <div class="profile-pic-actions">
+                            <label for="profile-pic-input" class="btn-secondary" style="cursor:pointer; display:inline-block; padding:8px 16px; font-size:0.9rem; margin-right:10px;">
+                                <i class="fas fa-camera"></i> Upload Picture
+                            </label>
+                            <button id="btn-remove-profile-pic" class="btn-secondary" style="cursor:pointer; display:none; padding:8px 16px; font-size:0.9rem; background:rgba(255,50,50,0.1); color:#ff6b6b; border-color:rgba(255,50,50,0.3);" onclick="removeProfilePicture()">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                            <input type="file" id="profile-pic-input" accept="image/jpeg, image/png, image/webp" style="display:none;">
+                            <p style="font-size:0.75rem; color:var(--text-muted); margin-top:8px; margin-bottom:0;">Max size: 16MB. JPG, PNG.</p>
+                            <div id="profile-pic-upload-status" style="font-size:0.8rem; color:var(--primary-blue); margin-top:5px; display:none;">Uploading...</div>
+                        </div>
+                    </div>
+
+                    <div class="user-info-readonly">
+                        <label>Your Name</label>
+                        <p id="settings-name-display">Shivam Maurya</p>
+                        <label>Email Address</label>
+                        <p id="settings-email-display">shivam.ai@gmail.com</p>
+                    </div>
+                    <div class="menu-divider"></div>
+                    <h3>Change Password</h3>
+                    <form id="change-pass-form">
+                        <input type="password" id="current-pass" class="auth-input" placeholder="Current Password"
+                            required autocomplete="current-password">
+                        <input type="password" id="new-pass" class="auth-input" placeholder="New Password" required
+                            autocomplete="new-password">
+                        <button type="submit" class="btn-success" style="width:auto; padding:10px 25px;">Update
+                            Password</button>
+                    </form>
+                </div>
+
+                <!-- Security Tab -->
+                <div id="settings-security" class="settings-tab-content" style="display:none;">
+                    <h2>Security Center</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">Manage your account
+                        protection and active sessions.</p>
+                    <div
+                        style="background:rgba(255,255,255,0.03); border-radius:12px; border:1px solid rgba(255,255,255,0.05); overflow:hidden;">
+                        <div
+                            style="padding:15px 20px; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <div style="font-weight:600; font-size:0.95rem;">Two-Factor Authentication</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">Add an extra layer of security.
+                                </div>
+                            </div>
+                            <label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+                        </div>
+                        <div
+                            style="padding:15px 20px; display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <div style="font-weight:600; font-size:0.95rem;">Login History</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">View active sessions.</div>
+                            </div>
+                            <button class="nav-btn-secondary" style="font-size:0.7rem; padding:6px 12px;">View
+                                Logs</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Tab -->
+                <div id="settings-notifications" class="settings-tab-content" style="display:none;">
+                    <h2>Notifications</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">Configure your system
+                        alerts.</p>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <div
+                            style="display:flex; align-items:center; justify-content:space-between; padding:12px; background:rgba(255,255,255,0.02); border-radius:10px;">
+                            <span style="font-size:0.9rem;">Email Alerts</span>
+                            <label class="switch"><input type="checkbox" checked><span
+                                    class="slider round"></span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Language Tab -->
+                <div id="settings-language" class="settings-tab-content" style="display:none;">
+                    <h2>Language & Region</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">Set your localization
+                        preferences.</p>
+                    <label style="display:block; font-size:0.85rem; margin-bottom:8px;">Interface Language</label>
+                    <select class="auth-input" style="width:100%; margin-bottom:20px; padding:12px;">
+                        <option>English</option>
+                        <option>Hindi</option>
+                    </select>
+                </div>
+
+                <!-- Support Tab -->
+                <div id="settings-support" class="settings-tab-content" style="display:none;">
+                    <h2>Support</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">Get help and
+                        documentation.</p>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                        <a href="#"
+                            style="padding:15px; background:rgba(0,86,179,0.1); border:1px solid var(--primary-blue); border-radius:12px; text-decoration:none; text-align:center; color:white;">Documentation</a>
+                        <a href="#"
+                            style="padding:15px; background:rgba(255,255,255,0.02); border:1px solid var(--card-border); border-radius:12px; text-decoration:none; text-align:center; color:white;">Expert
+                            Help</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Crop Modal ── -->
+    <div id="crop-modal" class="modal-overlay" style="display:none; z-index:10000; padding:20px;">
+        <div class="settings-card" style="max-width:500px; width:100%; display:flex; flex-direction:column; padding:20px; background:var(--card-bg); border:1px solid var(--border-color); border-radius:16px;">
+            <h2 style="margin-top:0; font-size:1.5rem; margin-bottom:15px;">Crop Profile Picture</h2>
+            <div style="width:100%; height:350px; background:#000; margin-bottom:20px; border-radius:12px; overflow:hidden;">
+                <img id="crop-image" src="" style="max-width:100%; display:block;">
+            </div>
+            <div style="display:flex; justify-content:flex-end; gap:10px;">
+                <button onclick="closeCropModal()" class="nav-btn-secondary" style="padding:10px 20px;">Cancel</button>
+                <button id="btn-crop-upload" class="btn-cta" style="padding:10px 20px;">Crop & Upload</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Image View Modal ── -->
+    <div id="image-view-modal" class="modal-overlay" style="display:none; z-index:10000; padding:20px;" onclick="closeImageView()">
+        <div style="max-width:400px; width:100%; position:relative;" onclick="event.stopPropagation()">
+            <img id="full-size-image" src="" style="width:100%; height:auto; border-radius:50%; box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+            <button onclick="closeImageView()" style="position:absolute; top:0; right:0; background:var(--primary-blue); color:#fff; border:none; width:36px; height:36px; border-radius:50%; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.3); font-size:18px; transform:translate(30%, -30%);">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
     <!-- ── Main JavaScript ── -->
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=1.1"></script>
 
 </body>
 

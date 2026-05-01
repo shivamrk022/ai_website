@@ -7,8 +7,9 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
-**A comprehensive, fully-responsive industrial automation platform featuring advanced UI/UX, AI core analytics, and a Python-powered backend service.**
+**A comprehensive, fully-responsive industrial automation platform featuring advanced UI/UX, AI core analytics, and a robust Python/PostgreSQL backend service.**
 
 [🌐 Live Demo](https://shivamrk022.github.io/ai_website/) &nbsp;|&nbsp; [💬 WhatsApp](https://wa.me/919702515105)
 
@@ -62,6 +63,13 @@ website/
 - **Cookie Privacy Banner:** A professional compliance notice with user consent memory.
 - **WhatsApp Integration:** Floating one-click contact button for instant business enquiries.
 
+### 🔐 Advanced User Management & Security
+- **Production Database:** Fully integrated **PostgreSQL** database via SQLAlchemy for robust user data management and industrial logs.
+- **Social Login:** Secure and seamless **Google Sign-In** integration.
+- **Profile Customization:** Users can upload, precisely **crop**, and remove custom profile pictures right from the settings menu using `Cropper.js`.
+- **Session Persistence:** State-of-the-art token and `localStorage` syncing ensures user sessions, themes, and avatars remain consistent across tabs and reloads.
+- **Split-Screen Authentication:** A high-end SaaS-style landing page for Login and Registration.
+
 ### ⚙️ Technical Foundation
 - **Professional Layout:** Full-width sections with centered content containers for a modern look.
 - **SEO Optimization:** Optimized meta tags and Open Graph protocol for better search visibility and social sharing.
@@ -76,7 +84,7 @@ website/
 Simply open `index.html` in any modern web browser to view the frontend immediately.
 
 ### 2. Run the Backend
-To activate the Python API services:
+To activate the Python API services, ensure you have PostgreSQL installed or default to SQLite:
 ```bash
 cd backend
 pip install -r requirements.txt

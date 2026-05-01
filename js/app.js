@@ -1,30 +1,42 @@
 // ============================================================
-// SHIVAM AI AUTOMATION — Main JavaScript
+// SHIVAM AI AUTOMATION — Main JavaScript (UPDATED)
 // ============================================================
 
-// ── Apply saved theme on load ──
+// ── Apply saved theme and Check Auth Gate ──
 (function () {
+    // Global Auth Gate removed for public landing page
+    const isLoggedIn = localStorage.getItem('userName');
+
+    // 2. Theme Logic
     var saved = '';
-    try { saved = localStorage.getItem('siteTheme') || ''; } catch (e) {}
-    var theme = saved || document.documentElement.getAttribute('data-theme') || 'light';
+    try { saved = localStorage.getItem('siteTheme') || ''; } catch (e) { }
+    var theme = saved || document.documentElement.getAttribute('data-theme') || 'dark'; // Default to dark
     document.documentElement.setAttribute('data-theme', theme);
-    var icon = document.getElementById('theme-icon');
-    if (icon) icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
 })();
 
-// ── Theme Toggle ──
+// ── Theme Toggle (Updated for Slide Switch) ──
 function toggleTheme() {
     var html = document.documentElement;
-    var icon = document.getElementById('theme-icon');
     var next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
     html.setAttribute('data-theme', next);
-    try { localStorage.setItem('siteTheme', next); } catch (e) {}
-    if (icon) icon.className = next === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    try { localStorage.setItem('siteTheme', next); } catch (e) { }
+    
+    // Update Slide Toggle UI if it exists
+    var slide = document.getElementById('theme-slide-toggle');
+    if (slide) slide.checked = (next === 'dark');
 }
 
 // ── Dashboard Toggle ──
 function toggleDashboard(show) {
+    // PROTECTED FEATURE: Only allow if logged in
+    if (show && !localStorage.getItem('userName')) {
+        alert("Please Sign Up to access the AI Control Dashboard.");
+        window.location.href = 'signup.html?mode=signup';
+        return;
+    }
+    
     var dash = document.getElementById('dashboard');
+    if (!dash) return;
     dash.style.display = show ? 'block' : 'none';
     document.body.style.overflow = show ? 'hidden' : 'auto';
     if (show) dash.style.animation = 'fadeIn 0.5s ease-out';
@@ -42,6 +54,7 @@ function toggleFaq(btn) {
 
 // ── AI Chatbot ──
 var _chatOpen = false;
+let isSending = false; // 🔥 prevents multiple API calls
 
 function toggleChat() {
     var win = document.getElementById('ai-chat-window');
@@ -59,38 +72,62 @@ function toggleChat() {
 }
 
 function sendChatMessage() {
+    if (isSending) return; // 🚫 stop spam
+    isSending = true;
+
     var inp = document.getElementById('ai-chat-input');
     var msgs = document.getElementById('ai-chat-messages');
-    if (!inp || !msgs) return;
+
+    if (!inp || !msgs) {
+        isSending = false;
+        return;
+    }
+
     var text = inp.value.trim();
-    if (!text) return;
+    if (!text) {
+        isSending = false;
+        return;
+    }
+
     addMsg(text, 'user', msgs);
     inp.value = '';
+
     var dot = addTyping(msgs);
 
-    // Try to fetch from backend
     fetch('http://localhost:5000/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text })
     })
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-        if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
-        addMsg(data.reply || getBotReply(text), 'ai', msgs);
-    })
-    .catch(function(err) {
-        // Fallback to local response if backend is offline
-        console.log('Backend offline, using local fallback');
-        if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
-        addMsg(getBotReply(text), 'ai', msgs);
-    });
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+            if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
+            addMsg(data.reply || "⚠️ No response", 'ai', msgs);
+        })
+        .catch(function (err) {
+            if (dot && dot.parentNode) dot.parentNode.removeChild(dot);
+            addMsg("⚠️ Server error. Try again.", 'ai', msgs);
+        })
+        .finally(function () {
+            isSending = false; // ✅ allow next request
+        });
 }
 
 function addMsg(text, role, msgs) {
     var d = document.createElement('div');
     d.className = role === 'user' ? 'user-msg' : 'ai-msg';
-    d.innerHTML = text;
+    
+    // 🖼️ Simple Markdown-to-Image converter
+    let formattedText = text;
+    if (role === 'ai') {
+        // Convert ![Alt](path) to <img src="path" class="chat-img">
+        formattedText = text.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" class="chat-img" onclick="window.open(this.src)">');
+        
+        // Convert newlines to <br> for better spacing
+        formattedText = formattedText.replace(/\n/g, '<br>');
+    }
+
+    d.innerHTML = formattedText;
     msgs.appendChild(d);
     msgs.scrollTop = msgs.scrollHeight;
 }
@@ -102,31 +139,6 @@ function addTyping(msgs) {
     msgs.appendChild(d);
     msgs.scrollTop = msgs.scrollHeight;
     return d;
-}
-
-function getBotReply(msg) {
-    var q = msg.toLowerCase();
-    if (/plc|programmable|logic controller/.test(q))
-        return '🔧 We specialise in <strong>custom PLC programming</strong> — covering Siemens, Allen-Bradley, Mitsubishi & more. Want a free consultation?';
-    if (/robot|robotic/.test(q))
-        return '🤖 Our <strong>Robotic Process Automation</strong> service handles pick-and-place, welding, assembly, and more end-to-end.';
-    if (/smart factory|iot|industry 4/.test(q))
-        return '🏭 We integrate <strong>IoT & Smart Factory</strong> solutions — connecting machines, sensors and data into one unified dashboard.';
-    if (/price|cost|quote|pricing/.test(q))
-        return '💰 Pricing depends on project scope. Fill our <strong>contact form</strong> below or WhatsApp us for a free estimate!';
-    if (/contact|email|phone|whatsapp|reach/.test(q))
-        return '📬 Reach us at <strong>contact@shivam-ai.com</strong> or WhatsApp <strong>+91 97025 15105</strong>.';
-    if (/time|duration|long|week|implement/.test(q))
-        return '⏱️ Implementation typically takes <strong>4 to 12 weeks</strong> depending on project complexity.';
-    if (/hello|hi|hey|morning|afternoon/.test(q))
-        return '👋 Hey there! How can I help you with <strong>industrial automation</strong> today?';
-    if (/thank|thanks/.test(q))
-        return "😊 You're welcome! Feel free to ask anything else.";
-    if (/service|offer|provide|solution/.test(q))
-        return '🛠️ We offer:<br>• <strong>PLC Programming</strong><br>• <strong>Robotic Automation</strong><br>• <strong>Smart Factory / IoT</strong><br>• <strong>AI Vision Systems</strong>';
-    if (/automation/.test(q))
-        return '⚙️ We deliver end-to-end <strong>industrial automation</strong> solutions tailored to your production line. Want to know more?';
-    return '🤔 Great question! Please <strong>contact our team</strong> via the form below or WhatsApp us — we respond within a few hours.';
 }
 
 // ── Page Loader ──
@@ -160,8 +172,8 @@ function initCounters() {
                 var el = entry.target;
                 var target = parseInt(el.getAttribute('data-target'));
                 var duration = 2000;
-                var start = 0;
                 var startTime = null;
+Loop:
                 function animate(time) {
                     if (!startTime) startTime = time;
                     var progress = Math.min((time - startTime) / duration, 1);
@@ -169,18 +181,32 @@ function initCounters() {
                     el.textContent = Math.floor(eased * target) + '+';
                     if (progress < 1) requestAnimationFrame(animate);
                 }
+
                 requestAnimationFrame(animate);
                 observer.unobserve(el);
             }
         });
     }, { threshold: 0.5 });
+
     counters.forEach(function (el) { observer.observe(el); });
 }
 
-// ── Active Nav Link Highlighting ──
+// ── Advanced Scroll Progress ──
+window.addEventListener('scroll', function() {
+    const scrollBar = document.getElementById('scrollBar');
+    if (scrollBar) {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        scrollBar.style.width = scrolled + "%";
+    }
+});
+
+// ── Active Nav Link ──
 function initActiveNav() {
     var sections = document.querySelectorAll('section[id], header[id]');
     var navLinks = document.querySelectorAll('.nav-links > a');
+
     var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -193,14 +219,16 @@ function initActiveNav() {
                 });
             }
         });
-    }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+    }, { threshold: 0.3 });
+
     sections.forEach(function (s) { observer.observe(s); });
 }
 
-// ── Back to Top Button ──
+// ── Back to Top ──
 function initBackToTop() {
     var btn = document.getElementById('backToTop');
     if (!btn) return;
+
     window.addEventListener('scroll', function () {
         if (window.scrollY > 400) {
             btn.classList.add('visible');
@@ -208,6 +236,7 @@ function initBackToTop() {
             btn.classList.remove('visible');
         }
     });
+
     btn.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -217,12 +246,14 @@ function initBackToTop() {
 function initHamburger() {
     var btn = document.getElementById('hamburgerBtn');
     var nav = document.getElementById('navLinks');
+
     if (!btn || !nav) return;
+
     btn.addEventListener('click', function () {
         btn.classList.toggle('active');
         nav.classList.toggle('open');
     });
-    // Close menu when a link is clicked
+
     nav.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
             btn.classList.remove('active');
@@ -231,65 +262,435 @@ function initHamburger() {
     });
 }
 
-// ── Cookie Banner ──
-function initCookieBanner() {
-    var banner = document.getElementById('cookieBanner');
-    if (!banner) return;
-    var accepted = localStorage.getItem('cookiesAccepted');
-    if (!accepted) {
-        setTimeout(function() {
-            banner.classList.add('show');
-        }, 2000);
-    }
-}
-
-function acceptCookies() {
-    var banner = document.getElementById('cookieBanner');
-    if (banner) {
-        banner.classList.remove('show');
-        localStorage.setItem('cookiesAccepted', 'true');
-    }
-}
-
-// ── Wire up events after DOM ready ──
+// ── Init ──
 document.addEventListener('DOMContentLoaded', function () {
-    // Contact form
-    var form = document.getElementById('contactForm');
-    if (form) {
-        form.onsubmit = function (e) {
-            e.preventDefault();
-            var btn = e.target.querySelector('button');
-            btn.textContent = 'REQUEST SENT!';
-            btn.style.background = '#10b981';
-            setTimeout(function () {
-                btn.textContent = 'SEND REQUEST';
-                btn.style.background = '';
-                e.target.reset();
-            }, 3000);
-        };
-    }
-
-    // Chat send button & Enter key
     var sendBtn = document.getElementById('ai-chat-send');
     var chatInp = document.getElementById('ai-chat-input');
-    if (sendBtn) sendBtn.addEventListener('click', sendChatMessage);
-    if (chatInp) chatInp.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') sendChatMessage();
-    });
 
-    // Initialize new features
+    if (sendBtn) sendBtn.addEventListener('click', sendChatMessage);
+
+    if (chatInp) {
+        chatInp.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChatMessage();
+            }
+        });
+    }
+
     initReveal();
     initCounters();
     initActiveNav();
     initBackToTop();
     initHamburger();
-    initCookieBanner();
+
+    // ── Sign Up Button Redirect ──
+    var signupBtn = document.getElementById('nav-signup-btn');
+    if (signupBtn) {
+        signupBtn.addEventListener('click', function() {
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // Handle Change Password Form
+    const changePassForm = document.getElementById('change-pass-form');
+    if (changePassForm) {
+        changePassForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const oldPassword = document.getElementById('current-pass').value;
+            const newPassword = document.getElementById('new-pass').value;
+            const email = localStorage.getItem('userEmail');
+            const submitBtn = changePassForm.querySelector('button');
+
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+            submitBtn.disabled = true;
+
+            fetch('http://localhost:5000/change-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, oldPassword, newPassword })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Password updated successfully!');
+                    changePassForm.reset();
+                    closeSettings();
+                } else {
+                    alert(data.message || 'Failed to update password');
+                }
+            })
+            .catch(err => alert('Error connecting to backend'))
+            .finally(() => {
+                submitBtn.innerHTML = 'Update Password';
+                submitBtn.disabled = false;
+            });
+        });
+    }
+    // Handle Profile Picture Upload with Cropper.js
+    let cropper = null;
+    const profilePicInput = document.getElementById('profile-pic-input');
+    const cropModal = document.getElementById('crop-modal');
+    const cropImage = document.getElementById('crop-image');
+    const btnCropUpload = document.getElementById('btn-crop-upload');
+
+    window.closeCropModal = function() {
+        if (cropModal) cropModal.style.display = 'none';
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+        if (profilePicInput) profilePicInput.value = '';
+    };
+
+    if (profilePicInput) {
+        profilePicInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Load image into cropper
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                cropImage.src = event.target.result;
+                cropModal.style.display = 'flex';
+
+                if (cropper) {
+                    cropper.destroy();
+                }
+
+                cropper = new Cropper(cropImage, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    dragMode: 'move',
+                    autoCropArea: 1,
+                    restore: false,
+                    guides: false,
+                    center: false,
+                    highlight: false,
+                    cropBoxMovable: true,
+                    cropBoxResizable: true,
+                    toggleDragModeOnDblclick: false,
+                });
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    if (btnCropUpload) {
+        btnCropUpload.addEventListener('click', function() {
+            if (!cropper) return;
+
+            const email = localStorage.getItem('userEmail');
+            if (!email) {
+                alert('User email not found. Please log in again.');
+                return;
+            }
+
+            btnCropUpload.innerText = 'Uploading...';
+            btnCropUpload.disabled = true;
+
+            cropper.getCroppedCanvas({
+                width: 400,
+                height: 400
+            }).toBlob(function(blob) {
+                const formData = new FormData();
+                formData.append('file', blob, 'profile.jpg');
+                formData.append('email', email);
+
+                fetch('http://localhost:5000/upload-profile-picture', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success && data.profile_pic) {
+                        localStorage.setItem('userProfilePic', data.profile_pic);
+                        checkAuth();
+                        if (typeof updateDashUserInfo === 'function') updateDashUserInfo();
+                        closeCropModal();
+                        
+                        const statusEl = document.getElementById('profile-pic-upload-status');
+                        if (statusEl) {
+                            statusEl.style.display = 'block';
+                            statusEl.innerText = 'Upload successful!';
+                            setTimeout(() => statusEl.style.display = 'none', 3000);
+                        }
+                    } else {
+                        alert(data.message || 'Upload failed');
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Error connecting to server for upload.');
+                })
+                .finally(() => {
+                    btnCropUpload.innerText = 'Crop & Upload';
+                    btnCropUpload.disabled = false;
+                });
+            }, 'image/jpeg');
+        });
+    }
+
+    // Image Viewer Modal Logic
+    window.openImageView = function(url) {
+        const modal = document.getElementById('image-view-modal');
+        const fullImg = document.getElementById('full-size-image');
+        if (modal && fullImg && url) {
+            fullImg.src = url;
+            modal.style.display = 'flex';
+        }
+    };
+
+    window.closeImageView = function() {
+        const modal = document.getElementById('image-view-modal');
+        if (modal) modal.style.display = 'none';
+    };
+
+    window.removeProfilePicture = function() {
+        const email = localStorage.getItem('userEmail');
+        if (!email) return;
+
+        if (confirm("Are you sure you want to remove your profile picture?")) {
+            const btnRemove = document.getElementById('btn-remove-profile-pic');
+            if (btnRemove) {
+                btnRemove.innerText = 'Removing...';
+                btnRemove.disabled = true;
+            }
+
+            fetch('http://localhost:5000/remove-profile-picture', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    localStorage.removeItem('userProfilePic');
+                    checkAuth();
+                    if (typeof updateDashUserInfo === 'function') updateDashUserInfo();
+                } else {
+                    alert(data.message || 'Failed to remove picture.');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Connection error.');
+            })
+            .finally(() => {
+                if (btnRemove) {
+                    btnRemove.innerHTML = '<i class="fas fa-trash"></i> Remove';
+                    btnRemove.disabled = false;
+                }
+            });
+        }
+    };
+
+    checkAuth();
 });
 
-// Fallback: wire immediately if DOM already ready
-if (document.readyState !== 'loading') {
-    var _s = document.getElementById('ai-chat-send');
-    var _i = document.getElementById('ai-chat-input');
-    if (_s) _s.onclick = sendChatMessage;
-    if (_i) _i.onkeydown = function (e) { if (e.key === 'Enter') sendChatMessage(); };
+// ── Session Management ──
+function checkAuth() {
+    const userName = localStorage.getItem('userName');
+    const userEmail = localStorage.getItem('userEmail');
+    const userProfilePic = localStorage.getItem('userProfilePic');
+    const signupBtn = document.getElementById('nav-signup-btn');
+    const userProfile = document.getElementById('user-profile');
+    const userDisplayName = document.getElementById('user-display-name');
+    const menuUserName = document.getElementById('menu-user-name');
+    const menuUserEmail = document.getElementById('menu-user-email');
+    const userInitial = document.getElementById('user-initial');
+    const navProfileImg = document.getElementById('nav-profile-img');
+    
+    // Settings displays
+    const settingsName = document.getElementById('settings-name-display');
+    const settingsEmail = document.getElementById('settings-email-display');
+    const settingsProfileImg = document.getElementById('settings-profile-img');
+    const settingsProfileInitial = document.getElementById('settings-profile-initial');
+
+    if (userName && userProfile && signupBtn) {
+        signupBtn.style.display = 'none';
+        userProfile.style.display = 'block';
+        userDisplayName.innerText = userName;
+        
+        if (menuUserName) menuUserName.innerText = userName;
+        if (menuUserEmail) menuUserEmail.innerText = userEmail || 'user@example.com';
+        
+        // Handle profile picture or initial
+        const initialStr = userName.charAt(0).toUpperCase();
+        const btnRemoveProfilePic = document.getElementById('btn-remove-profile-pic');
+        
+        if (userProfilePic && userProfilePic !== 'undefined' && userProfilePic !== 'null') {
+            if (userInitial) userInitial.style.display = 'none';
+            if (navProfileImg) {
+                navProfileImg.src = userProfilePic;
+                navProfileImg.style.display = 'block';
+            }
+            if (settingsProfileInitial) settingsProfileInitial.style.display = 'none';
+            if (settingsProfileImg) {
+                settingsProfileImg.src = userProfilePic;
+                settingsProfileImg.style.display = 'block';
+            }
+            if (btnRemoveProfilePic) btnRemoveProfilePic.style.display = 'inline-block';
+        } else {
+            if (userInitial) {
+                userInitial.innerText = initialStr;
+                userInitial.style.display = 'block';
+            }
+            if (navProfileImg) navProfileImg.style.display = 'none';
+            
+            if (settingsProfileInitial) {
+                settingsProfileInitial.innerText = initialStr;
+                settingsProfileInitial.style.display = 'block';
+            }
+            if (settingsProfileImg) settingsProfileImg.style.display = 'none';
+            if (btnRemoveProfilePic) btnRemoveProfilePic.style.display = 'none';
+        }
+
+        // Update settings modal displays
+        if (settingsName) settingsName.innerText = userName;
+        if (settingsEmail) settingsEmail.innerText = userEmail || 'user@example.com';
+    }
+}
+
+// ── Settings Logic ──
+function openSettings() {
+    const modal = document.getElementById('settings-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        toggleProfileMenu(); // Close the profile menu
+        
+        // Initialize the Slide Toggle state
+        const slide = document.getElementById('theme-slide-toggle');
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (slide) slide.checked = (currentTheme === 'dark');
+    }
+}
+
+function closeSettings() {
+    const modal = document.getElementById('settings-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+function showSettingsTab(tabName) {
+    // Hide all tabs
+    document.querySelectorAll('.settings-tab-content').forEach(tab => tab.style.display = 'none');
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById('settings-' + tabName).style.display = 'block';
+    document.getElementById('tab-' + tabName).classList.add('active');
+}
+
+
+function toggleProfileMenu() {
+    const menu = document.getElementById('profile-menu');
+    const dropdown = document.querySelector('.profile-dropdown');
+    if (menu) {
+        menu.classList.toggle('show');
+        dropdown.classList.toggle('active');
+    }
+}
+
+// Close dropdown when clicking outside
+window.addEventListener('click', function(e) {
+    const menu = document.getElementById('profile-menu');
+    const dropdown = document.querySelector('.profile-dropdown');
+    if (menu && !dropdown.contains(e.target)) {
+        menu.classList.remove('show');
+        dropdown.classList.remove('active');
+    }
+});
+
+// ── Dashboard Controller ──
+function toggleDashboard(show) {
+    const dash = document.getElementById('dashboard');
+    if (dash) {
+        dash.style.display = show ? 'block' : 'none';
+        if (show) {
+            document.body.style.overflow = 'hidden';
+            updateDashUserInfo();
+            showDashView('monitor'); // Default view
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+}
+
+function showDashView(viewId) {
+    // Hide all views
+    document.querySelectorAll('.dash-view').forEach(v => v.style.display = 'none');
+    // Show selected view
+    document.getElementById('view-' + viewId).style.display = 'block';
+    
+    // Update Sidebar active state
+    document.querySelectorAll('.dash-nav a').forEach(a => a.classList.remove('active'));
+    // Find the link by text match or data attribute (adding simpler text match here)
+    const title = viewId.charAt(0).toUpperCase() + viewId.slice(1);
+    document.getElementById('dash-view-title').innerText = title + ' Overview';
+}
+
+function updateDashUserInfo() {
+    const name = localStorage.getItem('userName') || "Engineer";
+    const userProfilePic = localStorage.getItem('userProfilePic');
+    const nameEl = document.getElementById('dash-user-name');
+    const dashAvatarIcon = document.getElementById('dash-avatar-icon');
+    const dashProfileImg = document.getElementById('dash-profile-img');
+
+    if (nameEl) nameEl.innerText = name;
+    
+    if (userProfilePic && userProfilePic !== 'undefined' && userProfilePic !== 'null') {
+        if (dashAvatarIcon) dashAvatarIcon.style.display = 'none';
+        if (dashProfileImg) {
+            dashProfileImg.src = userProfilePic;
+            dashProfileImg.style.display = 'block';
+        }
+    } else {
+        if (dashAvatarIcon) dashAvatarIcon.style.display = 'block';
+        if (dashProfileImg) dashProfileImg.style.display = 'none';
+    }
+}
+
+function clearLogs() {
+    const container = document.getElementById('dash-logs');
+    if (container) container.innerHTML = '<div class="log-entry"><span class="time">[' + new Date().toLocaleTimeString([], {hour12:false}) + ']</span> Log cleared by user.</div>';
+}
+
+// ── Dashboard Live Simulation ──
+function initDashSimulation() {
+    const logContainer = document.getElementById('dash-logs');
+    if (!logContainer) return;
+    const logs = ["Analyzing kinematic sync...", "Neural nodes responding: 1284/1284", "Optimizing power distribution...", "Swarm logic stabilized.", "Detecting sub-millimeter defects...", "Safety protocol active.", "Data relay synced with Global Core.", "AI temperature within parameters."];
+    
+    setInterval(() => {
+        const dash = document.getElementById('dashboard');
+        if (dash && dash.style.display === 'block') {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const time = new Date().toLocaleTimeString([], { hour12: false });
+            const msg = logs[Math.floor(Math.random() * logs.length)];
+            entry.innerHTML = `<span class="time">[${time}]</span> ${msg}`;
+            logContainer.prepend(entry);
+            if (logContainer.children.length > 50) logContainer.removeChild(logContainer.lastChild);
+
+            // Update mini stats
+            updateMiniStats();
+        }
+    }, 3000);
+}
+
+function updateMiniStats() {
+    const power = (4.0 + Math.random() * 0.5).toFixed(1) + " PetaFLOPS";
+    const nodes = (1280 + Math.floor(Math.random() * 10));
+    const latency = (2.0 + Math.random() * 1.0).toFixed(1) + "ms";
+    
+    if (document.getElementById('stat-power')) document.getElementById('stat-power').innerText = power;
+    if (document.getElementById('stat-nodes')) document.getElementById('stat-nodes').innerText = nodes;
+    if (document.getElementById('stat-latency')) document.getElementById('stat-latency').innerText = latency;
+}
+
+function logout() {
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userProfilePic');
+    window.location.reload();
 }
